@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="bc6526eb-0cc5-416b-96c5-dfe58928423a" ChangeDateTime="11/13/2012 18:39:22">
+    <Property Name="ElementName" Value="[Temperature].[Scales].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Temperature].[Scales]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ScaleId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2ec5a3b1-29ad-41f2-bba4-5d1d6a68ae9e" ChangeDateTime="11/13/2012 21:56:53">
+    <Property Name="ElementName" Value="[Temperature].[SensedData].[Year]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Temperature].[SensedData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreatedDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b63ea04a-7ce9-4768-895d-80755980f568" ChangeDateTime="11/13/2012 21:57:05">
+    <Property Name="ElementName" Value="[Temperature].[SensedData].[Month]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Temperature].[SensedData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreatedHour" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b18389be-a1f3-46eb-bdc2-0cd2d71ff9f5" ChangeDateTime="11/13/2012 21:57:37">
+    <Property Name="ElementName" Value="[Temperature].[SensedData].[Day]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[Temperature].[SensedData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ValueSeries" />
+  </Operation>
+</Operations>

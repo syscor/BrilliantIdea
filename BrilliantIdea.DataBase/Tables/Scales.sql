@@ -1,0 +1,4 @@
+﻿CREATE TABLE [dbo].[Scales]
+(
+	[ScaleId] INT NOT NULL PRIMARY KEY IDENTITY
+)
