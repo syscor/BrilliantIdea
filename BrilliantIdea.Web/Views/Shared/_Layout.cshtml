@@ -41,7 +41,7 @@
                     <ul class="nav">
                         <li class="active"><a href="#">Monitoreo</a></li>
                         <li><a href="#">Control</a></li>
-                        <li><a href="#">Configuración</a></li>
+                        <li><a href="">Configuración</a></li>
                     </ul>
                     <form class="pull-right">
                     </form>
@@ -49,20 +49,18 @@
             </div>
         </div>
         
-        <div class="container" id="body">
-            @RenderSection("featured", false)
-            <section>
-                @RenderBody()
-            </section>
-            <footer>
-                <div>
-                    <div>
-                        <p>&copy; @DateTime.Now.Year - SysCor Systems</p>
-                    </div>
-                </div>
-            </footer>
+        <div class="container" id="viewContainer">
+           @RenderBody()
         </div>
-      
+       
+        <footer>
+            <div>
+                <div>
+                    <p>&copy; @DateTime.Now.Year - SysCor Systems</p>
+                </div>
+            </div>
+        </footer>
+       
           @*General Section*@
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/jqueryui")

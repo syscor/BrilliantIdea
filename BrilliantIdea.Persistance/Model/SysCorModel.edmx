@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SysCorModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SysCorModelStoreContainer">
+          <EntitySet Name="CurrentValue" EntityType="SysCorModel.Store.CurrentValue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Ranges" EntityType="SysCorModel.Store.Ranges" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Scales" EntityType="SysCorModel.Store.Scales" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sensors" EntityType="SysCorModel.Store.Sensors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SensedData" EntityType="SysCorModel.Store.SensedData" store:Type="Tables" Schema="Temperature" />
+          <AssociationSet Name="FK_CurrentValue_ToTable" Association="SysCorModel.Store.FK_CurrentValue_ToTable">
+            <End Role="Sensors" EntitySet="Sensors" />
+            <End Role="CurrentValue" EntitySet="CurrentValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensedData_ToTable" Association="SysCorModel.Store.FK_SensedData_ToTable">
+            <End Role="Sensors" EntitySet="Sensors" />
+            <End Role="SensedData" EntitySet="SensedData" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CurrentValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SensorId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastModified" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ranges">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Scales">
+          <Key>
+            <PropertyRef Name="ScaleId" />
+          </Key>
+          <Property Name="ScaleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Sensors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SensorType" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MaxValue" Type="float" Nullable="false" />
+          <Property Name="MinValue" Type="float" Nullable="false" />
+          <Property Name="ScaleId" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SensedData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SensorId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" Nullable="false" />
+          <Property Name="CreatedHour" Type="int" Nullable="false" />
+          <Property Name="ValueSeries" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastUpdated" Type="datetime" Nullable="false" />
+          <Property Name="RangeId" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_CurrentValue_ToTable">
+          <End Role="Sensors" Type="SysCorModel.Store.Sensors" Multiplicity="1" />
+          <End Role="CurrentValue" Type="SysCorModel.Store.CurrentValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrentValue">
+              <PropertyRef Name="SensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensedData_ToTable">
+          <End Role="Sensors" Type="SysCorModel.Store.Sensors" Multiplicity="1" />
+          <End Role="SensedData" Type="SysCorModel.Store.SensedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SensedData">
+              <PropertyRef Name="SensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SysCorModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SysCorEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CurrentValue" EntityType="SysCorModel.CurrentValue" />
+          <EntitySet Name="Ranges" EntityType="SysCorModel.Ranges" />
+          <EntitySet Name="Scales" EntityType="SysCorModel.Scales" />
+          <EntitySet Name="Sensors" EntityType="SysCorModel.Sensors" />
+          <EntitySet Name="SensedData" EntityType="SysCorModel.SensedData" />
+          <AssociationSet Name="FK_CurrentValue_ToTable" Association="SysCorModel.FK_CurrentValue_ToTable">
+            <End Role="Sensors" EntitySet="Sensors" />
+            <End Role="CurrentValue" EntitySet="CurrentValue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SensedData_ToTable" Association="SysCorModel.FK_SensedData_ToTable">
+            <End Role="Sensors" EntitySet="Sensors" />
+            <End Role="SensedData" EntitySet="SensedData" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CurrentValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SensorId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LastModified" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sensors" Relationship="SysCorModel.FK_CurrentValue_ToTable" FromRole="CurrentValue" ToRole="Sensors" />
+        </EntityType>
+        <EntityType Name="Ranges">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Scales">
+          <Key>
+            <PropertyRef Name="ScaleId" />
+          </Key>
+          <Property Name="ScaleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Sensors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SensorType" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MaxValue" Type="Double" Nullable="false" />
+          <Property Name="MinValue" Type="Double" Nullable="false" />
+          <Property Name="ScaleId" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CurrentValue" Relationship="SysCorModel.FK_CurrentValue_ToTable" FromRole="Sensors" ToRole="CurrentValue" />
+          <NavigationProperty Name="SensedData" Relationship="SysCorModel.FK_SensedData_ToTable" FromRole="Sensors" ToRole="SensedData" />
+        </EntityType>
+        <EntityType Name="SensedData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="SensorId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedHour" Type="Int32" Nullable="false" />
+          <Property Name="ValueSeries" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="LastUpdated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RangeId" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Sensors" Relationship="SysCorModel.FK_SensedData_ToTable" FromRole="SensedData" ToRole="Sensors" />
+        </EntityType>
+        <Association Name="FK_CurrentValue_ToTable">
+          <End Role="Sensors" Type="SysCorModel.Sensors" Multiplicity="1" />
+          <End Role="CurrentValue" Type="SysCorModel.CurrentValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurrentValue">
+              <PropertyRef Name="SensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SensedData_ToTable">
+          <End Role="Sensors" Type="SysCorModel.Sensors" Multiplicity="1" />
+          <End Role="SensedData" Type="SysCorModel.SensedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sensors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SensedData">
+              <PropertyRef Name="SensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SysCorModelStoreContainer" CdmEntityContainer="SysCorEntities">
+          <EntitySetMapping Name="CurrentValue">
+            <EntityTypeMapping TypeName="SysCorModel.CurrentValue">
+              <MappingFragment StoreEntitySet="CurrentValue">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ranges">
+            <EntityTypeMapping TypeName="SysCorModel.Ranges">
+              <MappingFragment StoreEntitySet="Ranges">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scales">
+            <EntityTypeMapping TypeName="SysCorModel.Scales">
+              <MappingFragment StoreEntitySet="Scales">
+                <ScalarProperty Name="ScaleId" ColumnName="ScaleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sensors">
+            <EntityTypeMapping TypeName="SysCorModel.Sensors">
+              <MappingFragment StoreEntitySet="Sensors">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SensorType" ColumnName="SensorType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+                <ScalarProperty Name="ScaleId" ColumnName="ScaleId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SensedData">
+            <EntityTypeMapping TypeName="SysCorModel.SensedData">
+              <MappingFragment StoreEntitySet="SensedData">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedHour" ColumnName="CreatedHour" />
+                <ScalarProperty Name="ValueSeries" ColumnName="ValueSeries" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="RangeId" ColumnName="RangeId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="20ad52377d0144b0a70b94e190f70be5" Name="Diagram1">
+        <EntityTypeShape EntityType="SysCorModel.Sensors" Width="1.5" PointX="1" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SysCorModel.SensedData" Width="1.5" PointX="4.125" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="SysCorModel.FK_SensedData_ToTable" />
+        <EntityTypeShape EntityType="SysCorModel.CurrentValue" Width="1.5" PointX="4.125" PointY="3.625" />
+        <AssociationConnector Association="SysCorModel.FK_CurrentValue_ToTable" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

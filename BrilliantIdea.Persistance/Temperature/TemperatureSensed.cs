@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BrilliantIdea.Domain
+namespace BrilliantIdea.Persistance.Temperature
 {
-    public class Class1
+    public class TemperatureSensed
     {
+        
     }
+
 }

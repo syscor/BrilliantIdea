@@ -12,6 +12,8 @@ namespace BrilliantIdea.WebAPI.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
+            const string connectionstring = @"metadata=res://*/Model.SysCorModel.csdl|res://*/Model.SysCorModel.ssdl|res://*/Model.SysCorModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(local)\SQLEXPRESS;initial catalog=SysCor;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+            Domain.Temperature.TemperatureDomain.SetConnectionString(connectionstring);
             return new string[] { "value1", "value2" };
         }
 

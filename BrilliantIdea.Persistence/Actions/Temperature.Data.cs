@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BrilliantIdea.Persistence.Model;
 
-namespace BrilliantIdea.Persistence
+namespace BrilliantIdea.Persistence.Actions
 {
-    public class Class1
+    class Temperature
     {
+            var 
     }
 }
