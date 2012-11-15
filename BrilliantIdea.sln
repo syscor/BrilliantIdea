@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.Web", "BrilliantIdea.Web\BrilliantIdea.Web.csproj", "{91896AED-AF74-48E1-9183-C7A6D35289F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.Web.Tests", "BrilliantIdea.Web.Tests\BrilliantIdea.Web.Tests.csproj", "{2BB2BEC5-F456-4F4F-945F-265F39201233}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.WebAPI", "BrilliantIdea.WebAPI\BrilliantIdea.WebAPI.csproj", "{AF178EFC-7F10-4E52-AA27-FB195BEC64EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.WebAPI.Tests", "BrilliantIdea.WebAPI.Tests\BrilliantIdea.WebAPI.Tests.csproj", "{E30C6425-E0D5-452C-A139-D9832E76E006}"
@@ -14,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.Framework", "BrilliantIdea.Domain\BrilliantIdea.Framework.csproj", "{0A281297-48D2-4382-B7C2-26A06D5390F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.Persistance", "BrilliantIdea.Persistance\BrilliantIdea.Persistance.csproj", "{38F91238-D533-4D52-9D33-40CC349F37BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.WebApp", "BrilliantIdea.WebApp\BrilliantIdea.WebApp.csproj", "{77428EFD-AC18-4791-84BC-2E25A3508460}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{91896AED-AF74-48E1-9183-C7A6D35289F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91896AED-AF74-48E1-9183-C7A6D35289F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91896AED-AF74-48E1-9183-C7A6D35289F0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2BB2BEC5-F456-4F4F-945F-265F39201233}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BB2BEC5-F456-4F4F-945F-265F39201233}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BB2BEC5-F456-4F4F-945F-265F39201233}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BB2BEC5-F456-4F4F-945F-265F39201233}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF178EFC-7F10-4E52-AA27-FB195BEC64EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AF178EFC-7F10-4E52-AA27-FB195BEC64EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF178EFC-7F10-4E52-AA27-FB195BEC64EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{38F91238-D533-4D52-9D33-40CC349F37BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38F91238-D533-4D52-9D33-40CC349F37BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38F91238-D533-4D52-9D33-40CC349F37BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77428EFD-AC18-4791-84BC-2E25A3508460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77428EFD-AC18-4791-84BC-2E25A3508460}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77428EFD-AC18-4791-84BC-2E25A3508460}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77428EFD-AC18-4791-84BC-2E25A3508460}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

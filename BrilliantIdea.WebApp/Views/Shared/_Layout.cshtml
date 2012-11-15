@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/Content/jquery.wijmo-complete.2.2.1.css" rel="stylesheet" type="text/css"/>
+
+        <style>
+            body {
+                text-align: center;
+            }
+      
+            #g1 {
+                width:400px; height:320px;
+                display: inline-block;
+                margin: 1em;
+            }
+      
+            #g2, #g3, #g4 {
+                width:100px; height:80px;
+                display: inline-block;
+                margin: 1em;
+            }
+      
+            p {
+                display: block;
+                width: 450px;
+                margin: 2em auto;
+                text-align: left;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                <div id="g1"></div>
+                <div id="g2"></div>
+                <div id="g3"></div>
+                <div id="g4"></div>
+
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/raphael-min.js"></script>
+        <script src="~/Scripts/justgage.1.0.1.min.js"></script>
+
+    <script>
+        var g1, g2, g3, g4;
+
+        window.onload = function () {
+            var g1 = new JustGage({
+                id: "g1",
+                value: getRandomInt(0, 100),
+                min: 0,
+                max: 100,
+                title: "Big Fella",
+                label: "pounds"
+            });
+
+            var g2 = new JustGage({
+                id: "g2",
+                value: getRandomInt(0, 100),
+                min: 0,
+                max: 100,
+                title: "Small Buddy",
+                label: "oz"
+            });
+
+            var g3 = new JustGage({
+                id: "g3",
+                value: getRandomInt(0, 100),
+                min: 0,
+                max: 100,
+                title: "Tiny Lad",
+                label: "oz"
+            });
+
+            var g4 = new JustGage({
+                id: "g4",
+                value: getRandomInt(0, 100),
+                min: 0,
+                max: 100,
+                title: "Little Pal",
+                label: "oz"
+            });
+
+            setInterval(function () {
+                g1.refresh(getRandomInt(50, 100));
+                g2.refresh(getRandomInt(50, 100));
+                g3.refresh(getRandomInt(0, 50));
+                g4.refresh(getRandomInt(0, 50));
+            }, 2500);
+        };
+    </script>
+    </body>
+</html>
