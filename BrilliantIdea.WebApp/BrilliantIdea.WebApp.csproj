@@ -164,6 +164,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MonitorController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -177,8 +178,9 @@
     <Content Include="Content\images\wijeditor\wijmo-ui-icons_000000_240x112.png" />
     <Content Include="Content\images\wijeditor\wijmo-ui-icons_ffffff_240x112.png" />
     <Content Include="Content\images\wijrating\wijmo-ui-rating.png" />
-    <Content Include="Content\jquery.wijmo-complete.2.2.1.css" />
+    <Content Include="Content\jquery.wijmo-complete.all.2.2.1.min.css" />
     <Content Include="Content\jquery.wijmo-open.2.2.1.css" />
+    <Content Include="Content\Scripts\Views\Monitor\Monitor.js" />
     <Content Include="Content\themes\aristo\images\scrollbar-horizontal.png" />
     <Content Include="Content\themes\aristo\images\scrollbar-vertical.png" />
     <Content Include="Content\themes\aristo\images\scrollbutton-vertical.png" />
@@ -269,8 +271,35 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\themes\rocket\images\ui-bg_diagonals-thick_50_00a6dd_40x40.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_flat_100_f1f1f1_40x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_15_242122_1x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_15_242122_1x100_bottom.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_15_333333_1x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_15_333333_1x100_50.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_15_65358a_1x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_15_8A56B2_1x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_15_9eca38_1x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_15_9eca38_1x100_50.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_15_ca3838_1x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_highlight-soft_35_00a6dd_1x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_inset-soft_100_e1e1e1_1x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_inset-soft_15_242122_1x100 - Copy.png" />
+    <Content Include="Content\themes\rocket\images\ui-bg_inset-soft_15_242122_1x100.png" />
+    <Content Include="Content\themes\rocket\images\ui-icons_00a6dd_256x240.png" />
+    <Content Include="Content\themes\rocket\images\ui-icons_304915_256x240.png" />
+    <Content Include="Content\themes\rocket\images\ui-icons_d399ff_256x240.png" />
+    <Content Include="Content\themes\rocket\images\ui-icons_eaffb9_256x240.png" />
+    <Content Include="Content\themes\rocket\images\ui-icons_f4f4f9_256x240.png" />
+    <Content Include="Content\themes\rocket\images\ui-icons_fafafa_256x240.png" />
+    <Content Include="Content\themes\rocket\images\ui-icons_ff8f8f_256x240.png" />
+    <Content Include="Content\themes\rocket\images\wijmo-ui-icons_000000_240x112.png" />
+    <Content Include="Content\themes\rocket\images\wijmo-ui-icons_ffffff_240x112.png" />
+    <Content Include="Content\themes\rocket\jquery-wijmo.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\Scripts\Views\Shared\SysCor.Util.js" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -332,6 +361,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Monitor\MonitorView.cshtml" />
+    <Content Include="Views\Monitor\LevelView.cshtml" />
+    <Content Include="Views\Monitor\PressureView.cshtml" />
+    <Content Include="Views\Monitor\TemperatureView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

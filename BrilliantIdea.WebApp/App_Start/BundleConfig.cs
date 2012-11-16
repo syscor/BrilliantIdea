@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace BrilliantIdea.WebApp
 {
@@ -17,6 +16,11 @@ namespace BrilliantIdea.WebApp
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Content/js").Include(
+               "~/Content/Scripts/Views/Shared/SysCor.util.js",
+               "~/Content/Scripts/Views/Monitor/Monitor.js"
+               ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -38,6 +42,11 @@ namespace BrilliantIdea.WebApp
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            // Wijmo styles
+            bundles.Add(new StyleBundle("~/Content/themes/rocket/wijmo").Include(
+                "~/Content/themes/rocket/jquery-wijmo.css",
+                "~/Content/jquery.wijmo-complete.2.2.1.css"));
         }
     }
 }
