@@ -65,6 +65,9 @@
     <Build Include="Tables\Ranges.sql" />
     <Build Include="Tables\Process.sql" />
     <Build Include="Tables\ProcessTypes.sql" />
+    <Build Include="Tables\Categories.sql" />
+    <Build Include="Schemas\Core.sql" />
+    <Build Include="Tables\CategorieTypes.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BrilliantIdea.DataBase.refactorlog" />

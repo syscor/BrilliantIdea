@@ -12,7 +12,7 @@ body {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
-    padding-top: 40px;
+    padding-top: 30px;
 }
 
 a {
@@ -99,7 +99,7 @@ h5, h6 {
 /* main layout
 ----------------------------------------------------------*/
 .content-wrapper {
-    margin: auto 15px auto 15px;
+    margin: auto auto auto auto;
    
 }
 
@@ -117,7 +117,7 @@ h5, h6 {
     }
 
     .featured + .main-content {
-        background: url("../Images/heroAccent.png") no-repeat;
+        /*background: url("../Images/heroAccent.png") no-repeat;*/
     }
 
 header .content-wrapper {
@@ -211,18 +211,18 @@ header .content-wrapper {
 ----------------------------------------------------------*/
 /* featured */
 .featured {
-    background-color: #fff;
+    background-color: #F2F2F2;
 }
 
     .featured .content-wrapper {
-        background-color: #7ac0da;
-        background-image: -ms-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: -o-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #7ac0da), color-stop(1, #a4d4e6));
-        background-image: -webkit-linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
-        background-image: linear-gradient(left, #7ac0da 0%, #a4d4e6 100%);
+        background-color: #FF8800;
+        background-image: -ms-linear-gradient(left, #FF8800 0%, #FF8800 100%);
+        background-image: -o-linear-gradient(left, #FF8800 0%, #FF8800 100%);
+        background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #FF8800), color-stop(1, #a4d4e6));
+        background-image: -webkit-linear-gradient(left, #FF8800 0%, #FF8800 100%);
+        background-image: linear-gradient(left, #FF8800 0%, #FF8800 100%);
         color: #3e5667;
-        padding: 20px 40px 30px 40px;
+        padding: 5px 40px 5px 40px;
     }
 
         .featured hgroup.title h1, .featured hgroup.title h2 {
@@ -987,4 +987,6 @@ tr.pager td {
 .topbar ul .menu-dropdown li a, .topbar ul .dropdown-menu li a {
   padding: 4px 15px;
 }
-
+.bluelink {
+    color: #2C5782;
+}

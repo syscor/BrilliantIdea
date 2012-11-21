@@ -165,11 +165,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitorController.cs" />
+    <Compile Include="Controllers\ProcessController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Trees\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,7 +191,13 @@
     <Content Include="Content\images\wijrating\wijmo-ui-rating.png" />
     <Content Include="Content\jquery.wijmo-complete.all.2.2.1.min.css" />
     <Content Include="Content\jquery.wijmo-open.2.2.1.css" />
+    <Content Include="Content\Dynatree\jquery.dynatree.js" />
+    <Content Include="Content\Dynatree\jquery.dynatree.min.js" />
+    <Content Include="Content\Dynatree\skin-vista\icons.gif" />
+    <Content Include="Content\Dynatree\skin-vista\loading.gif" />
+    <Content Include="Content\Dynatree\skin-vista\ui.dynatree.css" />
     <Content Include="Content\Scripts\Views\Monitor\Monitor.js" />
+    <Content Include="Content\Scripts\Views\Process\Process.js" />
     <Content Include="Content\themes\aristo\images\scrollbar-horizontal.png" />
     <Content Include="Content\themes\aristo\images\scrollbar-vertical.png" />
     <Content Include="Content\themes\aristo\images\scrollbutton-vertical.png" />
@@ -374,6 +382,7 @@
     <Content Include="Views\Monitor\LevelView.cshtml" />
     <Content Include="Views\Monitor\PressureView.cshtml" />
     <Content Include="Views\Monitor\TemperatureView.cshtml" />
+    <Content Include="Views\Process\ProcessView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

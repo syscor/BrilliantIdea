@@ -11,18 +11,20 @@
         <!--Wijmo Theme-->
         <link href="~/Content/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" />
         <link href="~/Content/jquery.wijmo-complete.all.2.2.1.min.css" rel="stylesheet" type="text/css" />
+        <link href="~/Content/Dynatree/skin-vista/ui.dynatree.css"/>
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
 
     <body>
+        @Html.Hidden("processTreeUrl", @Url.Action("GetTree", "Process"))
         <header>
             <div class="topbar">
                 <div class="fill" style="height: 40px">
-                    <div class="container">
+                    <div>
                         <span style="color: white;position: absolute;z-index: 2;margin-left: 15px;margin-top: 10px;font-size: 13pt;font-weight: bold;font-family: Arial;">SysControl</span>
                         <ul id="menu" class="nav">
-                            <li class="active">@Html.ActionLink("Monitoreo", "MonitorView", "Monitor")</li>
+                            <li>@Html.ActionLink("Monitoreo", "MonitorView", "Monitor")</li>
                             <li>@Html.ActionLink("Control", "About", "Home")</li>
                             <li>@Html.ActionLink("Configuración", "Contact", "Home")</li>
                         </ul>
@@ -38,77 +40,40 @@
             </section>
         </div>
         <div id="footer-wrapper">
-            <div class="content-wrapper">
-                <div class="footer-text">
-                    <p>&copy; @DateTime.Now.Year - SysCor Systems</p>
-                </div>
+            <div class="footer" id="footer">
+                <div style="min-width: 600px; float: right;" >
+                    <div class="footer-text">
+                        &copy; @DateTime.Now.Year - SysCor Systems | <a target="_blank" class="bluelink " href="mailto:info@syscor.com?Subject=SysControl v1 Info Request">info@syscor.com</a> | 4431 725600 &nbsp;&nbsp;&nbsp;&nbsp; 
+                    </div>
+                    <div class="footer-icons">
+                        <div style="float: left;">
+                            <a href="http://www.linkedin.com/company/288446?trk=tyah" target="_blank"><img width="21" height="20" alt="LinkedIn" src="/Content/images/linkedIn.png"/></a>                
+                            <a href="https://www.facebook.com/xxxx" target="_blank"><img width="21" height="20" alt="facebook" src="/Content/images/facebook.png"/></a> 
+                            <a href="https://twitter.com/#!/xxx" target="_blank"><img width="21" height="20" alt="twitter" src="/Content/images/twiiter.png"/></a> 
+                        </div>
+                    </div>
+                </div>  
             </div>
-        </div>
+            <div class="clearfix"></div>
+        </div> 
+        
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/Content/js")
-        <script src="~/Scripts/raphael-min.js"></script>
-        <script src="~/Scripts/justgage.1.0.1.min.js"></script>
+        <script src="~/Scripts/knockout-2.2.0.js" type="text/javascript"></script>
+        <script src="~/Scripts/raphael-min.js" type="text/javascript"></script>
+        <script src="~/Scripts/justgage.1.0.1.min.js" type="text/javascript"></script>
         <script src="~/Scripts/jquery-ui-1.9.0.min.js" type="text/javascript"></script>
         <!--Wijmo Widgets JavaScript-->
         <script src="~/Scripts/jquery.wijmo-open.all.2.2.1.min.js" type="text/javascript"></script>
         <script src="~/Scripts/jquery.wijmo-complete.all.2.2.1.min.js" type="text/javascript"></script>
+        <script src="~/Content/Dynatree/jquery.dynatree.min.js"></script>
 
-        
         <script type="text/javascript">
-             SysCor.initialize();
-             Monitor.initialize();
+            SysCor.initialize();
+            Process.initialize();
         </script>
         @RenderSection("scripts", false)
         
-          <script>
-              $("#menu").wijmenu();
-              var g1, g2, g3, g4;
-
-              window.onload = function () {
-                  var g1 = new JustGage({
-                      id: "g1",
-                      value: getRandomInt(0, 100),
-                      min: 0,
-                      max: 100,
-                      title: "Big Fella",
-                      label: "pounds"
-                  });
-
-                  var g2 = new JustGage({
-                      id: "g2",
-                      value: getRandomInt(0, 100),
-                      min: 0,
-                      max: 100,
-                      title: "Small Buddy",
-                      label: "oz"
-                  });
-
-                  var g3 = new JustGage({
-                      id: "g3",
-                      value: getRandomInt(0, 100),
-                      min: 0,
-                      max: 100,
-                      title: "Tiny Lad",
-                      label: "oz"
-                  });
-
-                  var g4 = new JustGage({
-                      id: "g4",
-                      value: getRandomInt(0, 100),
-                      min: 0,
-                      max: 100,
-                      title: "Little Pal",
-                      label: "oz"
-                  });
-
-                  setInterval(function () {
-                      g1.refresh(getRandomInt(50, 100));
-                      g2.refresh(getRandomInt(50, 100));
-                      g3.refresh(getRandomInt(0, 50));
-                      g4.refresh(getRandomInt(0, 50));
-                  }, 2500);
-              };
-        </script>
     </body>
 </html>

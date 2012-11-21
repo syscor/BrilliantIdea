@@ -19,6 +19,7 @@ namespace BrilliantIdea.WebApp
 
             bundles.Add(new ScriptBundle("~/bundles/Content/js").Include(
                "~/Content/Scripts/Views/Shared/SysCor.util.js",
+               "~/Content/Scripts/Views/Process/Process.js",
                "~/Content/Scripts/Views/Monitor/Monitor.js"
                ));
 
