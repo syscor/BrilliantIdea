@@ -28,4 +28,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ValueSeries" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="7fbba883-1ca1-40dc-88fe-dc60af3d5caa" ChangeDateTime="11/20/2012 23:29:01">
+    <Property Name="ElementName" Value="[dbo].[Process].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Process]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ProcessId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="47aee3fc-ad03-481c-80dd-77e405eb6998" ChangeDateTime="11/20/2012 23:31:19">
+    <Property Name="ElementName" Value="[dbo].[ProcessTypes].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ProcessTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TypeId" />
+  </Operation>
 </Operations>

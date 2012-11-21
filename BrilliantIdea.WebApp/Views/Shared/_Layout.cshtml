@@ -6,11 +6,13 @@
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
 
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
+        <!--Bootstrap-->
+@*        <link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet"/>*@
         <!--Wijmo Theme-->
         <link href="~/Content/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" />
         <link href="~/Content/jquery.wijmo-complete.all.2.2.1.min.css" rel="stylesheet" type="text/css" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
     </head>
 
     <body>
@@ -35,13 +37,13 @@
                 @RenderBody()
             </section>
         </div>
-        <footer>
+        <div id="footer-wrapper">
             <div class="content-wrapper">
-                <div class="float-left">
+                <div class="footer-text">
                     <p>&copy; @DateTime.Now.Year - SysCor Systems</p>
                 </div>
             </div>
-        </footer>
+        </div>
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/Content/js")

@@ -99,8 +99,8 @@ h5, h6 {
 /* main layout
 ----------------------------------------------------------*/
 .content-wrapper {
-    margin: 0 auto;
-    max-width: 1100px;
+    margin: auto 15px auto 15px;
+   
 }
 
 #body {
@@ -124,12 +124,37 @@ header .content-wrapper {
     padding-top: 20px; 
 }
 
-footer {
+#footer {
     clear: both;
     background-color: #e2e2e2;
     font-size: .8em;
-    height: 100px;
+    margin: 0px auto;
+    letter-spacing: 0em;
+    text-align: right;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    height: 23px;
+    width: 100%;
+    border-top: 1px solid #E8E8E8;
+    vertical-align: middle;
 }
+
+.footer-text
+{
+    float: left;
+    padding-top: 7px;
+ }
+ .footer-icons {
+    padding-top: 2px;
+    padding-right: 3px;
+ }
+ .footer-follow {
+     float: left; 
+     padding-top: 9px;
+     padding-left: 0px;
+ }
 
 
 /* site title
@@ -962,3 +987,4 @@ tr.pager td {
 .topbar ul .menu-dropdown li a, .topbar ul .dropdown-menu li a {
   padding: 4px 15px;
 }
+
