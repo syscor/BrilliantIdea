@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Scales]
+﻿CREATE TABLE [Core].[Scales]
 (
 	[ScaleId] INT NOT NULL PRIMARY KEY IDENTITY
 )

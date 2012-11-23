@@ -163,9 +163,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConfigController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonitorController.cs" />
     <Compile Include="Controllers\ProcessController.cs" />
+    <Compile Include="Controllers\SensorController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -184,6 +186,7 @@
     <Content Include="Content\bootstrap\js\bootstrap-scrollspy.js" />
     <Content Include="Content\bootstrap\js\bootstrap-tabs.js" />
     <Content Include="Content\bootstrap\js\bootstrap-twipsy.js" />
+    <Content Include="Content\images\genericuse\settings.png" />
     <Content Include="Content\images\waiting.gif" />
     <Content Include="Content\images\wijeditor\wijmo-ui-editor.png" />
     <Content Include="Content\images\wijeditor\wijmo-ui-icons_000000_240x112.png" />
@@ -383,6 +386,8 @@
     <Content Include="Views\Monitor\PressureView.cshtml" />
     <Content Include="Views\Monitor\TemperatureView.cshtml" />
     <Content Include="Views\Process\ProcessView.cshtml" />
+    <Content Include="Views\Sensor\SensorView.cshtml" />
+    <Content Include="Views\Config\ControlPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

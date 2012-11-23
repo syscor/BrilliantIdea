@@ -4,52 +4,19 @@ SysCor.requestObject = {};
 SysCor.initialize = function () {
     $('#monitorTabs').tabs();
     $("#menu").wijmenu();
-    // SysCor.performViewChange("settings/homesettings");
-};
-
-ChangeView = function (url) {
-    //Get the current View
-    var currentDiv = $('#viewContainer').children().first();
-
-    //Instead of this, ask for confirmation.
-    if ($(currentDiv).attr('changed') == 'true') {
-        $("#dialog:ui-dialog").dialog("destroy");
-        $("#dialog-data").dialog({
-            resizable: false,
-            height: 150,
-            modal: true,
-            buttons: {
-                "Accept": function () {
-                    SysCor.performViewChange(url);
-                    $(this).dialog("close");
-
-                },
-                Cancel: function () {
-                    $(this).dialog("close");
-                }
-            }
-        });
-        $("#dialog-data").dialog("open");
-        return true;
-    }
-
-    SysCor.performViewChange(url);
-    //return a successful node click
-    return true;
 };
 
 SysCor.performViewChange = function (url) {
+    $.ajax({
+        url: "/Config/ControlPanel/",
+        type: 'GET',
+        dataType: 'html', 
+        success: SysCor.doSubmitSuccess
+    });
+};
 
-    SysCor.requestObject.url = url;
-    SysCor.requestObject.type = "GET";
-    SysCor.requestObject.data = {};
-    SysCor.requestObject.success = function (data) {
-        SysCor.LastUrlLoaded = url;
-        $('#viewContainer').html('');
-        var currentView = '<div>' + data + '</div>';
-        $('#viewContainer').html(currentView);
-    };
-    jQuery.ajax(SysCor.requestObject);
+SysCor.doSubmitSuccess = function(result) {
+    $('div#bodyContainer').html(result);
 };
 
 SysCor.loadTree = function(treeName, url, callback, async) {
@@ -106,12 +73,11 @@ SysCor.expandAndCollapse = function(node) {
 SysCor.loadStoredValue = function(variableName) {
     var value = $("#" + variableName).val();
     if (typeof value == "undefined") {
-        SysCor.alert("No se puede cargar el valor con el nombre: " + variableName);
+       alert("No se puede cargar el valor con el nombre: " + variableName);
     }
     return value;
 };
 
-//Global object, the functions are events that the current view "subscribes" to
 var app = {
     PreviousNode: null,
     NodeSaved: function (data) { },

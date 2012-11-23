@@ -68,6 +68,8 @@
     <Build Include="Tables\Categories.sql" />
     <Build Include="Schemas\Core.sql" />
     <Build Include="Tables\CategorieTypes.sql" />
+    <Build Include="Tables\SensorTypes.sql" />
+    <Build Include="Tables\HardwareBoards.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BrilliantIdea.DataBase.refactorlog" />

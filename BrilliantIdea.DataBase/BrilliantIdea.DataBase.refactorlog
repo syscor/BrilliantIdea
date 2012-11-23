@@ -42,4 +42,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="TypeId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="aa30d30b-4e58-4e86-865f-6df4a498efd2" ChangeDateTime="11/23/2012 17:41:06">
+    <Property Name="ElementName" Value="[dbo].[Sensors].[IPAdress]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sensors]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IPAddress" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="37cdd492-dc69-4a38-a5c9-57871e2b50f5" ChangeDateTime="11/23/2012 17:41:42">
+    <Property Name="ElementName" Value="[dbo].[Sensors].[IPAddress]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sensors]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BoardId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="301aefcf-073f-4629-8371-0024942ac1d2" ChangeDateTime="11/23/2012 17:50:17">
+    <Property Name="ElementName" Value="[dbo].[HardwareBoards].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[HardwareBoards]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BoardId" />
+  </Operation>
 </Operations>

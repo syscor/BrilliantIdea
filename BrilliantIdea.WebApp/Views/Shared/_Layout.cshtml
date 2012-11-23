@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width" />
 
         <!--Bootstrap-->
-@*        <link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet"/>*@
+        @*<link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet"/>*@
         <!--Wijmo Theme-->
         <link href="~/Content/themes/rocket/jquery-wijmo.css" rel="stylesheet" type="text/css" title="rocket-jqueryui" />
         <link href="~/Content/jquery.wijmo-complete.all.2.2.1.min.css" rel="stylesheet" type="text/css" />
@@ -24,9 +24,16 @@
                     <div>
                         <span style="color: white;position: absolute;z-index: 2;margin-left: 15px;margin-top: 10px;font-size: 13pt;font-weight: bold;font-family: Arial;">SysControl</span>
                         <ul id="menu" class="nav">
+                            <li>
+                                <a href="javascript:void(0);" id="configLink" title="Configuración" onclick="SysCor.performViewChange('/Process/ProcessView')">Procesos</a>
+                            </li>
                             <li>@Html.ActionLink("Monitoreo", "MonitorView", "Monitor")</li>
                             <li>@Html.ActionLink("Control", "About", "Home")</li>
-                            <li>@Html.ActionLink("Configuración", "Contact", "Home")</li>
+                            <li style="margin-left: 20px">
+                                <a href="javascript:void(0);" id="configLink" title="Configuración" onclick="SysCor.performViewChange('/Config/ControlPanel')">
+                                    <img alt="Configuración" src="~/Content/images/genericuse/settings.png" width="15" />
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

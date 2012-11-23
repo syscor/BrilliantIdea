@@ -7,6 +7,11 @@
     [MinValue] FLOAT NOT NULL, 
     [ScaleId] INT NOT NULL, 
     [IsDeleted] BIT NOT NULL DEFAULT 0, 
+    [BoardId] INT NOT NULL, 
+    [LastModified] DATETIME NOT NULL DEFAULT GETDATE(), 
+    CONSTRAINT [FK_Sensors_SensorTypes] FOREIGN KEY (SensorType) REFERENCES [Core].[SensorTypes](Id), 
+    CONSTRAINT [FK_Sensors_Scales] FOREIGN KEY (ScaleId) REFERENCES [Core].[Scales](ScaleId), 
+    CONSTRAINT [FK_Sensors_HardwareBoards] FOREIGN KEY (BoardId) REFERENCES [Core].[HardwareBoards](BoardId), 
 )
 
 GO
