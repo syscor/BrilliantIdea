@@ -181,6 +181,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Trees\BoardSettingNodes\BoardCategoryNode.cs" />
+    <Compile Include="Models\Trees\BoardSettingNodes\BoardNode.cs" />
     <Compile Include="Models\Trees\Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -315,6 +317,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Scripts\Views\Shared\SysCor.Util.js" />
+    <Content Include="Content\Scripts\Views\Config\BoardSettings.js" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />

@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace BrilliantIdea.WebApp
+namespace BrilliantIdea.WebApp.App_Start
 {
     public class BundleConfig
     {
@@ -22,7 +22,8 @@ namespace BrilliantIdea.WebApp
             bundles.Add(new ScriptBundle("~/bundles/Content/js").Include(
                "~/Content/Scripts/Views/Shared/SysCor.util.js",
                "~/Content/Scripts/Views/Process/Process.js",
-               "~/Content/Scripts/Views/Monitor/Monitor.js"
+               "~/Content/Scripts/Views/Monitor/Monitor.js",
+               "~/Content/Scripts/Views/Config/BoardSettings.js"
                ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
