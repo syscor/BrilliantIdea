@@ -7,6 +7,7 @@ namespace BrilliantIdea.WebApp
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
+            ////////////////////////jquery/////////////////////////////
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -17,6 +18,7 @@ namespace BrilliantIdea.WebApp
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
 
+            /////////////////////App javascripts/////////////////////////
             bundles.Add(new ScriptBundle("~/bundles/Content/js").Include(
                "~/Content/Scripts/Views/Shared/SysCor.util.js",
                "~/Content/Scripts/Views/Process/Process.js",
@@ -27,7 +29,7 @@ namespace BrilliantIdea.WebApp
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
+            
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(

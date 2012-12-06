@@ -10,8 +10,12 @@ namespace BrilliantIdea.WebApp.Controllers
     {
         public ActionResult ControlPanel()
         {
-            return PartialView("ControlPanel");
+            return PartialView();
         }
 
+        public ActionResult BoardSettings()
+        {
+            return PartialView();
+        }
     }
 }

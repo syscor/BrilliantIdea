@@ -2,13 +2,12 @@
 SysCor.requestObject = {};
 
 SysCor.initialize = function () {
-    $('#monitorTabs').tabs();
-    $("#menu").wijmenu();
+    //$('#monitorTabs').tabs();
 };
 
 SysCor.performViewChange = function (url) {
     $.ajax({
-        url: "/Config/ControlPanel/",
+        url: url,
         type: 'GET',
         dataType: 'html', 
         success: SysCor.doSubmitSuccess
@@ -85,4 +84,3 @@ var app = {
 };
 
 SysCor.trees = {};
-SysCor.loadTree('processTree', SysCor.loadStoredValue("processTreUrl"), null);
