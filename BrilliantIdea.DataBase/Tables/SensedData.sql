@@ -10,7 +10,7 @@
     [RangeId] INT NOT NULL, 
     [Message] NVARCHAR(MAX) NULL, 
     CONSTRAINT [FK_SensedData_ToSensors] FOREIGN KEY (SensorId) REFERENCES [dbo].[Sensors](Id), 
-    CONSTRAINT [FK_SensedData_ToProcess] FOREIGN KEY (ProcessId) REFERENCES [dbo].[Process](ProcessId)
+    CONSTRAINT [FK_SensedData_ToProcess] FOREIGN KEY (ProcessId) REFERENCES [Core].[Process](ProcessId)
 )
 
 GO

@@ -7,8 +7,8 @@
     <ProjectGuid>{38F91238-D533-4D52-9D33-40CC349F37BA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BrilliantIdea.Persistance</RootNamespace>
-    <AssemblyName>BrilliantIdea.Persistance</AssemblyName>
+    <RootNamespace>BrilliantIdea.Framework</RootNamespace>
+    <AssemblyName>BrilliantIdea.Framework</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.7\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.7\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -46,66 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\CurrentValue.cs">
-      <DependentUpon>SysCorModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\C__RefactorLog.cs">
-      <DependentUpon>SysCorModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Ranges.cs">
-      <DependentUpon>SysCorModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Scales.cs">
-      <DependentUpon>SysCorModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SensedData.cs">
-      <DependentUpon>SysCorModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Sensors.cs">
-      <DependentUpon>SysCorModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SysCorModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SysCorModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SysCorModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SysCorModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\SysCorModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SysCorModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Boards\BoardModel.cs" />
+    <Compile Include="Boards\Boards.cs" />
+    <Compile Include="Boards\BoardTypeModel.cs" />
     <Compile Include="Temperature\TemperatureSensed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\DBTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Model\SysCorModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SysCorModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model\SysCorModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SysCorModel.edmx</DependentUpon>
-      <LastGenOutput>SysCorModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="Model\SysCorModel.edmx.diagram">
-      <DependentUpon>SysCorModel.edmx</DependentUpon>
-    </None>
-    <None Include="Model\SysCorModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SysCorModel.edmx</DependentUpon>
-      <LastGenOutput>SysCorModel.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,7 +11,7 @@ namespace BrilliantIdea.Domain.Temperature
     {
         public static void SetConnectionString(string connectionString)
         {
-              Persistance.Utils.DBTools.OverrrideConnectionString(connectionString); 
+              
         }
     }
 }

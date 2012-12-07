@@ -184,6 +184,7 @@
     <Compile Include="Models\Trees\BoardSettingNodes\BoardCategoryNode.cs" />
     <Compile Include="Models\Trees\BoardSettingNodes\BoardNode.cs" />
     <Compile Include="Models\Trees\Node.cs" />
+    <Compile Include="Models\ViewModel\BoardSettingsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

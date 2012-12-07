@@ -7,8 +7,8 @@
     <ProjectGuid>{0A281297-48D2-4382-B7C2-26A06D5390F9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BrilliantIdea.Domain</RootNamespace>
-    <AssemblyName>BrilliantIdea.Domain</AssemblyName>
+    <RootNamespace>BrilliantIdea.Framework</RootNamespace>
+    <AssemblyName>BrilliantIdea.Framework</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\BoardsLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Temperature\TemperatureDomain.cs" />
+    <Compile Include="Utils\DBInitialization.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BrilliantIdea.Persistance\BrilliantIdea.Persistance.csproj">

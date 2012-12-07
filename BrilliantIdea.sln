@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.WebAPI.Tests"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BrilliantIdea.DataBase", "BrilliantIdea.DataBase\BrilliantIdea.DataBase.sqlproj", "{AF7E46A1-B7CA-41AF-83DD-CA5ECCC3D9CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.Framework", "BrilliantIdea.Domain\BrilliantIdea.Framework.csproj", "{0A281297-48D2-4382-B7C2-26A06D5390F9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.Persistance", "BrilliantIdea.Persistance\BrilliantIdea.Persistance.csproj", "{38F91238-D533-4D52-9D33-40CC349F37BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrilliantIdea.WebApp", "BrilliantIdea.WebApp\BrilliantIdea.WebApp.csproj", "{77428EFD-AC18-4791-84BC-2E25A3508460}"
@@ -28,15 +26,9 @@ Global
 		{E30C6425-E0D5-452C-A139-D9832E76E006}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E30C6425-E0D5-452C-A139-D9832E76E006}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF7E46A1-B7CA-41AF-83DD-CA5ECCC3D9CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF7E46A1-B7CA-41AF-83DD-CA5ECCC3D9CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF7E46A1-B7CA-41AF-83DD-CA5ECCC3D9CB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{AF7E46A1-B7CA-41AF-83DD-CA5ECCC3D9CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF7E46A1-B7CA-41AF-83DD-CA5ECCC3D9CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AF7E46A1-B7CA-41AF-83DD-CA5ECCC3D9CB}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{0A281297-48D2-4382-B7C2-26A06D5390F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A281297-48D2-4382-B7C2-26A06D5390F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A281297-48D2-4382-B7C2-26A06D5390F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A281297-48D2-4382-B7C2-26A06D5390F9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{38F91238-D533-4D52-9D33-40CC349F37BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{38F91238-D533-4D52-9D33-40CC349F37BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38F91238-D533-4D52-9D33-40CC349F37BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
