@@ -4,19 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
-using BrilliantIdea.Framework.Utils;
+using BrilliantIdea.Framework.Boards;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
 
 namespace BrilliantIdea.WebAPI.Controllers
 {
     public class ConfigController : ApiController
     {
-        // GET api/config
-        public JsonResult Get()
+      
+      
+        public string Get()
         {
-            var dbInitialize = new DBInitialization();
-            dbInitialize.Initialize();
+            var dbInitialize = new Boards();
+            dbInitialize.InitTypeBoards();
             return "success";
         }
+        
+      /// <summary>
+      /// Get all boards
+      /// </summary>
+      /// <returns>List of objetcs BoardTypeModel</returns>
+      public string GetBoards()
+      {
+          var boards = new Boards();
+          var result = boards.GetAllBoardTypes();
+          return JsonConvert.SerializeObject(result);
+      }
 
         // GET api/values/5
         public string Get(int id)
