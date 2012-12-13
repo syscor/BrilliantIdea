@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BrilliantIdea.WebApp.Models.DTOs;
+using BrilliantIdea.WebApp.Models.ViewModel;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace BrilliantIdea.WebApp.Controllers
@@ -19,20 +22,15 @@ namespace BrilliantIdea.WebApp.Controllers
             return PartialView();
         }
 
-        public JsonResult Getboards()
+        public JsonResult GetBoards()
         {
-            var client = new RestClient("http://localhost:3916");
+            var client = new BrilliantIdeaApi("", "");
             var request = new RestRequest("/api/config/getboards", Method.GET);
-            request.AddHeader("Content-Type", "application/json");
-            IRestResponse response = client.Execute(request);
-            return Json("success", JsonRequestBehavior.AllowGet);
-
-
+            var response = client.Execute<BoardTypeDTO>(request);
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Getboards2()
-        {
-           
-        }
+       
+        public class BoardTypeDTO : List<BoardTypeModelDTO>{}
     }
 }

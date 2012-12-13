@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BrilliantIdea.Framework.DAL;
 
 namespace BrilliantIdea.Framework.Boards
@@ -16,6 +17,7 @@ namespace BrilliantIdea.Framework.Boards
             var boardTypeModel = new BoardTypeModel
             {
                 Name = "Netduino Plus",
+                BoardId = Guid.NewGuid(),
                 Description = "Tarjeta Netduino Plus con microcontrolador 32-bits a 168Mhz y conexión ethernet"
             };
 

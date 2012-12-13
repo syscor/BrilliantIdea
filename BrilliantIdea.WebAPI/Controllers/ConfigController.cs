@@ -26,11 +26,11 @@ namespace BrilliantIdea.WebAPI.Controllers
       /// Get all boards
       /// </summary>
       /// <returns>List of objetcs BoardTypeModel</returns>
-      public string GetBoards()
+      public IEnumerable<BoardTypeModel> GetBoards()
       {
           var boards = new Boards();
           var result = boards.GetAllBoardTypes();
-          return JsonConvert.SerializeObject(result);
+          return result;
       }
 
         // GET api/values/5

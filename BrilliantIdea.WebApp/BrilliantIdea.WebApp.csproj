@@ -187,10 +187,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DTOs\BoardTypeModelDTO.cs" />
     <Compile Include="Models\Trees\BoardSettingNodes\BoardCategoryNode.cs" />
     <Compile Include="Models\Trees\BoardSettingNodes\BoardNode.cs" />
     <Compile Include="Models\Trees\Node.cs" />
     <Compile Include="Models\ViewModel\BoardSettingsViewModel.cs" />
+    <Compile Include="Models\ViewModel\BrilliantIdeaApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -343,6 +345,8 @@
     <Content Include="Scripts\justgage.1.0.1.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\knockout.wijmo.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\raphael-min.js" />

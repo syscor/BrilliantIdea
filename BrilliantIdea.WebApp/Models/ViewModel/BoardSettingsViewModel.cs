@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using BrilliantIdea.WebApp.Controllers;
+using BrilliantIdea.WebApp.Models.DTOs;
+using RestSharp;
 
 namespace BrilliantIdea.WebApp.Models.ViewModel
 {
@@ -9,7 +13,32 @@ namespace BrilliantIdea.WebApp.Models.ViewModel
     {
         public BoardSettingsViewModel()
         {
-            
+            Initialize();
         }
+
+        #region Variables and Properties
+
+        public List<BoardTypeModelDTO> BoardList { get; set; }
+
+        public class BoardListDTO : BoardTypeModelDTO
+        {
+        }
+
+        #endregion
+
+        #region Methods
+        private void Initialize()
+        {
+            FillBoardList();
+        }
+
+        private void FillBoardList()
+        {
+            var client = new BrilliantIdeaApi("", "");
+            var request = new RestRequest("/api/config/getboards", Method.GET);
+            BoardList = client.Execute<ConfigController.BoardTypeDTO>(request);
+        }
+
+        #endregion
     }
 }
