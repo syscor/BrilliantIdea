@@ -6,6 +6,11 @@ function BoardSettingsLogic() {
     self.type = "BoardSettingsLogic";
     self.boardTypes = ko.observableArray(new Array());
     self.selectedBoard = ko.observable();
+    self.deviceUrl = ko.observable();
+
+    self.testCommunication = function () {
+       
+    };
 }
 
 BoardSettings.initialize = function() {
@@ -17,7 +22,7 @@ BoardSettings.initialize = function() {
 };
 
 BoardSettings.getInitialValues = function(boardLogic) {
-    $.getJSON("/config/getBoards", function(data) {
+    $.getJSON("/config/GetBoardTypes", function (data) {
        boardLogic.boardTypes = ko.mapping.fromJS(data);
         ko.applyBindings(boardLogic, document.getElementById("boardSteps"));
         $("#boardDropDown").wijcombobox({

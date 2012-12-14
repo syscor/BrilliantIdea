@@ -10,7 +10,7 @@ using RestSharp;
 
 namespace BrilliantIdea.WebApp.Controllers
 {
-    public class ConfigController : Controller
+    public class ConfigController : SysCorControllerBase
     {
         public ActionResult ControlPanel()
         {
@@ -22,15 +22,28 @@ namespace BrilliantIdea.WebApp.Controllers
             return PartialView();
         }
 
-        public JsonResult GetBoards()
+        public JsonResult GetBoardTypes()
         {
             var client = new BrilliantIdeaApi("", "");
-            var request = new RestRequest("/api/config/getboards", Method.GET);
+            var request = new RestRequest("/api/config/gettypeboards", Method.GET);
             var response = client.Execute<BoardTypeDTO>(request);
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
-       
+       public JsonResult TestCommunication(string url)
+       {
+           try
+           {
+
+           }
+           catch (Exception)
+           {
+               
+               throw;
+           }
+           return Json("success", JsonRequestBehavior.AllowGet);
+       }
+
         public class BoardTypeDTO : List<BoardTypeModelDTO>{}
     }
 }

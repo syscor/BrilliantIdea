@@ -182,6 +182,7 @@
     <Compile Include="Controllers\MonitorController.cs" />
     <Compile Include="Controllers\ProcessController.cs" />
     <Compile Include="Controllers\SensorController.cs" />
+    <Compile Include="Controllers\SysCorControllerBase.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -200,8 +201,8 @@
     <Content Include="Content\bootstrap\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap\bootstrap.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
-    <Content Include="Content\bootstrap\img\glyphicons-halflings-white.png" />
-    <Content Include="Content\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
     <Content Include="Content\bootstrap\js\bootstrap-alerts.js" />
     <Content Include="Content\bootstrap\js\bootstrap-buttons.js" />
     <Content Include="Content\bootstrap\js\bootstrap-dropdown.js" />
