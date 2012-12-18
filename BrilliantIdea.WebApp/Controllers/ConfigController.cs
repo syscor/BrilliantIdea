@@ -22,6 +22,19 @@ namespace BrilliantIdea.WebApp.Controllers
             return PartialView();
         }
 
+        public ActionResult RestoreSettings()
+        {
+            return PartialView();
+        }
+
+        public JsonResult InitializeConfigs()
+        {
+            var client = new BrilliantIdeaApi("", "");
+            var request = new RestRequest("/api/config/getinitializeboards", Method.GET);
+            var response = client.Execute(request);
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult GetBoardTypes()
         {
             var client = new BrilliantIdeaApi("", "");
@@ -30,20 +43,36 @@ namespace BrilliantIdea.WebApp.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
-       public JsonResult TestCommunication(string url)
-       {
-           try
-           {
+        public JsonResult GetBoards()
+        {
+            var client = new BrilliantIdeaApi("", "");
+            var request = new RestRequest("api/config/getboards", Method.GET);
+            var response = client.Execute<BoardDeviceListDTO>(request);
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
 
-           }
-           catch (Exception)
-           {
-               
-               throw;
-           }
-           return Json("success", JsonRequestBehavior.AllowGet);
-       }
 
-        public class BoardTypeDTO : List<BoardTypeModelDTO>{}
+        public JsonResult TestCommunication(string url)
+        {
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return Json("success", JsonRequestBehavior.AllowGet);
+        }
+
+        public class BoardTypeDTO : List<BoardTypeModelDTO>
+        {
+        }
+
+        public class BoardDeviceListDTO : List<BoardDeviceDTO>
+        {
+        }
     }
+
 }

@@ -10,10 +10,11 @@ namespace BrilliantIdea.Framework.Boards
     {
         [BsonId, JsonIgnore]
         public ObjectId Id { get; set; }
+
         public Guid DeviceId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public BoardTypeModel Type { get; set; }
+        public BoardType Type { get; set; }
         public string Url { get; set; }
         public List<Port> PortsConfiguration { get; set; }
     }
@@ -23,5 +24,6 @@ namespace BrilliantIdea.Framework.Boards
         public int PortNumber { get; set; }
         public Sensor AttachedSensor { get; set; }
         public int InputType { get; set; }
+        public bool Enable { get; set; }
     }
 }

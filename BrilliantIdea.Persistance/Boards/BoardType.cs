@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace BrilliantIdea.Framework.Boards
 {
-    public class BoardTypeModel
+    public class BoardType
     {
         [BsonId, JsonIgnore]
         public ObjectId Id { get; set; }

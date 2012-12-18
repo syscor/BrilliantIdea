@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using RestSharp;
 
 namespace BrilliantIdea.WebApp.Models.ViewModel
@@ -36,6 +37,18 @@ namespace BrilliantIdea.WebApp.Models.ViewModel
                 throw response.ErrorException;
             }
             return response.Data;
+        }
+
+        public object Execute(RestRequest request)
+        {
+            var client = new RestClient
+                {
+                    BaseUrl = _baseUrl,
+                    Authenticator = new HttpBasicAuthenticator(_accountSid, _secretKey)
+                };
+            request.AddParameter("AccountSid", _accountSid, ParameterType.UrlSegment);
+            var response = client.Execute(request);
+            return response.Content;
         }
     }
 }

@@ -188,7 +188,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DTOs\BoardDeviceDTO.cs" />
     <Compile Include="Models\DTOs\BoardTypeModelDTO.cs" />
+    <Compile Include="Models\DTOs\SensorDTO.cs" />
     <Compile Include="Models\Trees\BoardSettingNodes\BoardCategoryNode.cs" />
     <Compile Include="Models\Trees\BoardSettingNodes\BoardNode.cs" />
     <Compile Include="Models\Trees\Node.cs" />
@@ -399,6 +401,7 @@
     <Content Include="Views\Sensor\SensorView.cshtml" />
     <Content Include="Views\Config\ControlPanel.cshtml" />
     <Content Include="Views\Config\BoardSettings.cshtml" />
+    <Content Include="Views\Config\RestoreSettings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

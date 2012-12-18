@@ -37,10 +37,10 @@
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><img src="~/Content/images/genericuse/settings.png" alt="Configuración" width="18"/> <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-header">Hardware</li>
-                                    <li><a href="javascript:void(0);" onclick="SysCor.performViewChange('/Config/BoardSettings');" >Tarjetas DAQ</a></li>
+                                    <li><a href="javascript:void(0);" onclick="SysCor.performViewChange('/Config/BoardSettings');">Tarjetas DAQ</a></li>
                                     <li><a href="#">Sensores</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Config</a></li>
+                                    <li><a href="javascript:void(0);" onclick="SysCor.performViewChange('/Config/RestoreSettings');">Inicializar Configuraciones</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -80,6 +80,7 @@
         <!--Wijmo Widgets JavaScript-->
         <script src="~/Scripts/jquery.wijmo-open.all.2.3.1.min.js" type="text/javascript"></script>
         <script src="~/Scripts/jquery.wijmo-complete.all.2.3.1.min.js" type="text/javascript"></script>
+        <script src="~/Scripts/knockout.wijmo.js" type="text/javascript"></script>
         <script src="~/Content/Dynatree/jquery.dynatree.min.js"></script>
 
         <script type="text/javascript">

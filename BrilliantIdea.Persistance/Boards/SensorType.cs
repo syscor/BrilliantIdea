@@ -9,14 +9,13 @@ using Newtonsoft.Json;
 
 namespace BrilliantIdea.Framework.Boards
 {
-    public class Sensor
+    public class SensorType
     {
         [BsonId, JsonIgnore]
         public ObjectId Id { get; set; }
 
-        public Guid SensorId { get; set; }
+        public Guid SensorTypeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public SensorType SensorType { get; set; }
     }
 }

@@ -7,6 +7,7 @@ function BoardSettingsLogic() {
     self.boardTypes = ko.observableArray(new Array());
     self.selectedBoard = ko.observable();
     self.deviceUrl = ko.observable();
+    self.boardList = ko.observableArray(new Array());
 
     self.testCommunication = function () {
        
@@ -22,11 +23,20 @@ BoardSettings.initialize = function() {
 };
 
 BoardSettings.getInitialValues = function(boardLogic) {
-    $.getJSON("/config/GetBoardTypes", function (data) {
-       boardLogic.boardTypes = ko.mapping.fromJS(data);
-        ko.applyBindings(boardLogic, document.getElementById("boardSteps"));
-        $("#boardDropDown").wijcombobox({
-           
+    $.getJSON("/config/GetBoardTypes", function(data) {
+        boardLogic.boardTypes = ko.mapping.fromJS(data);
+        $.getJSON("/config/GetBoards", function (data1) {
+            boardLogic.boardList = ko.mapping.fromJS(data1);
+            ko.applyBindings(boardLogic, document.getElementById("boardSteps"));
+            $("#boardDropDown").wijcombobox({
+            });
         });
+    });
+    
+    
+};
+
+BoardSettings.initializeConfigurations = function() {
+    $.getJSON("config/InitializeConfigs", function (data) {
     });
 };

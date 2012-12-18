@@ -12,6 +12,6 @@ namespace BrilliantIdea.Framework.ViewModel
         public ObjectId Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public BoardTypeModel Type { get; set; }
+        public BoardType Type { get; set; }
     }
 }

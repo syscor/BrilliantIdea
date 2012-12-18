@@ -13,6 +13,20 @@ namespace BrilliantIdea.WebAPI.Controllers
 {
     public class ConfigController : ApiController
     {
+        public bool GetInitializeBoards()
+        {
+            try
+            {
+                var board = new Boards();
+                board.InitTypeBoards();
+                board.InitBoards();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
 
         /// <summary>
         /// Get all devices
@@ -21,16 +35,15 @@ namespace BrilliantIdea.WebAPI.Controllers
         public IEnumerable<BoardDevice> GetBoards()
         {
             var boards = new Boards();
-            var result = new List<BoardDevice>();
+            var result = boards.GetAllBoards();
             return result;
         }
-
 
         /// <summary>
         /// Get all type boards
         /// </summary>
         /// <returns>List of objetcs BoardTypeModel</returns>
-        public IEnumerable<BoardTypeModel> GetTypeBoards()
+        public IEnumerable<BoardType> GetTypeBoards()
         {
             var boards = new Boards();
             var result = boards.GetAllBoardTypes();

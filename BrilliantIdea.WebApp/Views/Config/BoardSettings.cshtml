@@ -5,38 +5,53 @@
 </div>
 <div id="boardSteps">
     <ul>
+        <li><a href="#boardList">Listado</a></li>
         <li><a href="#addBoard">Agregar</a></li>
-        <li><a href="#selectBoard">Editar</a></li>
-        <li><a href="#configBoard">Configurar</a></li>
+        <li><a href="#selectBoard">Configurar</a></li>
+        <li><a href="#configBoard">Administrar</a></li>
     </ul>
+
+    <div id="boardList">
+        <div class="row-fluid">
+            <div class="span12">
+                <table id="gvBoards" data-bind="wijgrid:{data:boardList, allowEditing:false}"></table>
+            </div>
+        </div>
+    </div>
+
     <div id="addBoard" style="min-height: 400px;">
         <div class="row-fluid">
             <div class="span4">
                 <span class="badge">1</span>
                 <h4 style="margin-left: 35px; margin-top: -19px">Datos Generales</h4>
-                 <label><strong>Nombre del dispositivo</strong></label>
+                <label><strong>Nombre del dispositivo</strong></label>
                 <input id="txtname" style="width: 100%" type="text" placeholder="Asignar un nombre..."/>
-                 <label><strong>Descripción</strong></label>
+                <label><strong>Descripción</strong></label>
                 <textarea id="txtarea" style="width: 100%" rows="3"></textarea>
-                 <label><strong>Tipo de dispositivo</strong></label>
-                <select id="boardDropDown" style="width: auto;" data-bind="options:boardTypes, optionsText: 'Name', value:selectedBoard, optionsCaption:'Selecciona el tipo de dispositivo...'"></select>
-                 <label style="margin-top: 15px;"><strong>Dirección IP ó Url asignada</strong></label>
-                <input id="txtip" style="width: 100%" type="text" placeholder="Dirección IP"/>
-                <a href="javascript:void(0);" class="btn btn-info pull-right" style="color: white; margin-top: 15px;">Probar comunicación</a>
             </div>
             <div class="span4 offset1">
                 <span class="badge">2</span>
-                <h4 style="margin-left: 35px; margin-top: -19px">Configuración de puertos (default)</h4>
+                <h4 style="margin-left: 35px; margin-top: -19px">Datos de enlace</h4>
+                <label><strong>Tipo de dispositivo</strong></label>
+                <select id="boardDropDown" style="width: auto;" data-bind="options:boardTypes, optionsText: 'Name', value:selectedBoard, optionsCaption:'Selecciona el tipo de dispositivo...'"></select>
+                <label style="margin-top: 15px;"><strong>Dirección IP ó Url asignada</strong></label>
+                <input id="txtip" style="width: 100%" type="text" placeholder="Dirección IP"/>
+                <a href="javascript:void(0);" class="btn btn-info pull-right" style="color: white; margin-top: 15px;">Probar comunicación</a>
             </div>
         </div>
-        <div style="text-align: right;">
-            <a href="#" class="btn btn-success" style="color: white;">Guardar</a>
-            <a href="#" class="btn btn-danger" style="color: white; margin-left: 30px;">Cancelar</a>
+        <div class="row-fluid">
+            <div class="span4 offset4">
+                <a href="#" class="btn btn-success" style="color: white;">Guardar</a>
+                <a href="#" class="btn btn-danger" style="color: white; margin-left: 30px;">Cancelar</a>
+            </div>
         </div>
     </div>
-    <div id="selectBoard">Edición de caracteristicas</div>
+    <div id="selectBoard">
+        <h3>Configuración de puertos y sensores</h3>
+        
+    </div>
  
-    <div id="configBoard">Configuración de puertos y sensores</div>
+    <div id="configBoard">Administración de dispositivos y edición de datos</div>
 </div>
 
 <script type="text/javascript">
