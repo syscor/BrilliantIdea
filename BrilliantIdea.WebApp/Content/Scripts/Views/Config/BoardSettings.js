@@ -8,7 +8,10 @@ function BoardSettingsLogic() {
     self.selectedBoard = ko.observable();
     self.deviceUrl = ko.observable();
     self.boardList = ko.observableArray(new Array());
-
+    self.alert = {
+        head : ko.observable(),
+        body : ko.observable()
+    };
     self.testCommunication = function () {
        
     };

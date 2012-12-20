@@ -2,7 +2,9 @@
 SysCor.requestObject = {};
 
 SysCor.initialize = function () {
-    //$('#monitorTabs').tabs();
+    $('#fountainG').hide();
+    $('#bodyContainer').ajaxStart(function () { $('#fountainG').show(); });
+    $('#bodyContainer').ajaxComplete(function () { $('#fountainG').hide(); });
 };
 
 SysCor.performViewChange = function (url) {

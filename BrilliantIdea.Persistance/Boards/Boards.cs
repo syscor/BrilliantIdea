@@ -15,11 +15,29 @@ namespace BrilliantIdea.Framework.Boards
         //Initialize the basic Type Boards supported
         public void InitTypeBoards()
         {
+            var pinList = new List<PinFeature>();
+            
+            var pin = new PinFeature {Pins = "digital pins 0-1", PinDescription = "UART 1 RX, TX"};
+            pinList.Add(pin);
+            var pin1 = new PinFeature { Pins = "digital pins 2-3", PinDescription = "UART 2 RX, TX/PWM" };
+            pinList.Add(pin1);
+            var pin2 = new PinFeature { Pins = "digital pins 5-6", PinDescription = "PWM, PWM" };
+            pinList.Add(pin2);
+            var pin3 = new PinFeature { Pins = "digital pins 7-8", PinDescription = "UART 3 RX, TX (también funciona como UART 2 RTS, CTS" };
+            pinList.Add(pin3);
+            var pin4 = new PinFeature { Pins = "digital pins 9-10", PinDescription = "PWM, PWM" };
+            pinList.Add(pin4);
+            var pin5 = new PinFeature { Pins = "digital pins 11-13", PinDescription = "PWM/MOSI, MISO" };
+            pinList.Add(pin5);
+            var pin6 = new PinFeature { Pins = "digital pin SD/SC", PinDescription = "SDA/SCL (también funciona como UART 4 RX, TX" };
+            pinList.Add(pin6);
+
             var boardTypeModel = new BoardType
                 {
                     Name = "Netduino Plus",
                     BoardId = Guid.NewGuid(),
-                    Description = "Tarjeta Netduino Plus con microcontrolador 32-bits a 168Mhz y conexión ethernet"
+                    Description = "Tarjeta Netduino Plus con microcontrolador 32-bits a 168Mhz y conexión ethernet",
+                    PinFeatures = pinList
                 };
 
             if (!_typeRepository.Any(x => x.Name == boardTypeModel.Name))
