@@ -66,8 +66,9 @@ namespace BrilliantIdea.WebApp.Controllers
             return Json("success", JsonRequestBehavior.AllowGet);
         }
 
-        public class BoardTypeDTO : List<BoardTypeModelDTO>
+        public class BoardTypeDTO
         {
+            public List<BoardTypeModelDTO> BoardTypeList { get; set; }
         }
 
         public class BoardDeviceListDTO : List<BoardDeviceDTO>

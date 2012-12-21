@@ -34,9 +34,6 @@ namespace BrilliantIdea.WebApp.Models.ViewModel
 
         private void FillBoardList()
         {
-            var client = new BrilliantIdeaApi("", "");
-            var request = new RestRequest("/api/config/getboards", Method.GET);
-            BoardList = client.Execute<ConfigController.BoardTypeDTO>(request);
         }
 
         #endregion

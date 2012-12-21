@@ -43,7 +43,7 @@ namespace BrilliantIdea.WebAPI.Controllers
         /// Get all type boards
         /// </summary>
         /// <returns>List of objetcs BoardTypeModel</returns>
-        public IEnumerable<BoardType> GetTypeBoards()
+        public Boards.BoardTypesResult GetTypeBoards()
         {
             var boards = new Boards();
             var result = boards.GetAllBoardTypes();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BrilliantIdea.Framework.DAL;
 
 namespace BrilliantIdea.Framework.Boards
@@ -103,14 +104,20 @@ namespace BrilliantIdea.Framework.Boards
 
         }
 
-        public IEnumerable<BoardType> GetAllBoardTypes()
+        public BoardTypesResult GetAllBoardTypes()
         {
-            return _typeRepository.GetAllRows();
+            var result = new BoardTypesResult {BoardTypeList = _typeRepository.GetAllRows().ToList()};
+            return result;
         }
 
         public IEnumerable<BoardDevice> GetAllBoards()
         {
             return _deviceRepository.GetAllRows();
+        }
+
+        public class BoardTypesResult
+        {
+            public List<BoardType> BoardTypeList { get; set; }  
         }
     }
 }
