@@ -50,6 +50,13 @@ namespace BrilliantIdea.WebAPI.Controllers
             return result;
         }
 
+        [System.Web.Mvc.HttpPost]
+        public bool SaveBoardDevice(string boardJson)
+        {
+            
+            return true;
+        }
+
         // GET api/values/5
         public string Get(int id)
         {
@@ -59,6 +66,7 @@ namespace BrilliantIdea.WebAPI.Controllers
         // POST api/values
         public void Post([FromBody] string value)
         {
+
         }
 
         // PUT api/values/5

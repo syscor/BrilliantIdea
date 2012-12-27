@@ -5,22 +5,37 @@ function BoardSettingsLogic() {
     var self = this;
     self.type = "BoardSettingsLogic";
     self.boardTypes = ko.observableArray(new Array());
-    self.selectedBoardType = {
-        BoardId: ko.observable(),
-        Name: ko.observable(),
-        Description: ko.observable(),
-        PinFeatures: ko.observableArray()
-    };
-
+    self.selectedBoardType = ko.observable();
+    self.boardId = ko.observable();
+    self.boardName = ko.observable();
+    self.boardDescription = ko.observable();
     self.deviceUrl = ko.observable();
+    self.PortsConfiguration = ko.observableArray(new Array());
     self.boardList = ko.observableArray(new Array());
     self.alert = {
         head: ko.observable(),
         body: ko.observable()
     };
-    
+
     self.testCommunication = function() {
 
+    };
+
+    self.saveBoard = function() {
+        var board = {
+            DeviceId: self.boardId(),
+            Name: self.boardName(),
+            Description: self.boardDescription(),
+            Type: self.selectedBoardType().TypeId(),
+            Url: self.deviceUrl(),
+            PortsConfiguration: self.PortsConfiguration()
+        };
+        
+        var boardJson = ko.toJSON(board);
+        
+        $.post("config/SaveBoardDevice", { boardJson: boardJson }, function (data) {
+            alert("success");
+        });
     };
 }
 
@@ -49,8 +64,6 @@ BoardSettings.getInitialValues = function (boardLogic) {
             }
         });
     });
-
-
 };
 
 BoardSettings.initializeConfigurations = function () {

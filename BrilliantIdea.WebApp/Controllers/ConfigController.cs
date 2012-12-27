@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using BrilliantIdea.WebApp.Models.DTOs;
 using BrilliantIdea.WebApp.Models.ViewModel;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
+using RestSharp.Validation;
 
 namespace BrilliantIdea.WebApp.Controllers
 {
@@ -51,18 +49,21 @@ namespace BrilliantIdea.WebApp.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult SaveBoardDevice(string boardJson)
+        {
+            var client = new BrilliantIdeaApi("", "");
+            var request = new RestRequest("api/config/SaveBoardDevice", Method.POST);
+            request.AddBody(boardJson);
+
+            var response = client.Execute(request);
+
+            var device2 = JObject.Parse(boardJson);
+            return Json("success");
+        }
 
         public JsonResult TestCommunication(string url)
         {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
             return Json("success", JsonRequestBehavior.AllowGet);
         }
 

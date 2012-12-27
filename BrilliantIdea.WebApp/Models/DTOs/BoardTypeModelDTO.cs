@@ -5,7 +5,7 @@ namespace BrilliantIdea.WebApp.Models.DTOs
 {
     public class BoardTypeModelDTO
     {
-        public Guid BoardId { get; set; }
+        public Guid TypeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public List<PinFeature> PinFeatures { get; set; }
@@ -13,7 +13,7 @@ namespace BrilliantIdea.WebApp.Models.DTOs
 
     public class PinFeature
     {
-        public int Pin { get; set; }
+        public string Pins { get; set; }
         public string PinDescription { get; set; }
     }
 }

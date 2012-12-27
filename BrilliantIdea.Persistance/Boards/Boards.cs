@@ -36,7 +36,7 @@ namespace BrilliantIdea.Framework.Boards
             var boardTypeModel = new BoardType
                 {
                     Name = "Netduino Plus",
-                    BoardId = Guid.NewGuid(),
+                    TypeId = Guid.NewGuid(),
                     Description = "Tarjeta Netduino Plus con microcontrolador 32-bits a 168Mhz y conexión ethernet",
                     PinFeatures = pinList
                 };

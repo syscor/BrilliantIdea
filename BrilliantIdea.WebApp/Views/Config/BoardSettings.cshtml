@@ -40,20 +40,19 @@
                 <span class="badge">1</span>
                 <h4 style="margin-left: 35px; margin-top: -19px">Datos Generales</h4>
                 <label><strong>Nombre del dispositivo</strong></label>
-                <input id="txtname" style="width: 100%" type="text" placeholder="Asignar un nombre..."/>
+                <input id="txtname" style="width: 100%" type="text" placeholder="Asignar un nombre..." data-bind=" value : boardName"/>
                 <label><strong>Descripción</strong></label>
-                <textarea id="txtarea" style="width: 100%" rows="3"></textarea>
+                <textarea id="txtarea" style="width: 100%" rows="3" data-bind="text:boardDescription"></textarea>
                 <label><strong>Tipo de dispositivo</strong></label>
                 <select id="boardDropDown" style="width: auto;" data-bind="options:boardTypes, optionsText: 'Name', value:selectedBoardType, optionsCaption:'Selecciona el tipo de dispositivo...'"></select>
-                <span data-bind="text:selectedBoardType.Name ? selectedBoardType.Name : 'en espera'"></span>
             </div>
             <div class="span4 offset1">
                 <span class="badge">2</span>
                 <h4 style="margin-left: 35px; margin-top: -19px">Datos de enlace</h4>
                 <label><strong>Dirección IP ó Url asignada</strong></label>
-                <input id="txtip" style="width: 100%" type="text" placeholder="Dirección IP"/>
-                <a href="javascript:void(0);" class="btn btn-info pull-right" style="color: white; margin-top: 15px;">Probar comunicación</a>
-                <label style="margin-top: 15px;"><strong>Caracteristicas GPIO</strong></label>
+                <input id="txtip" style="width: 100%" type="text" placeholder="Dirección IP" data-bind="value:deviceUrl"/>
+                <a href="javascript:void(0);" class="btn btn-info pull-right" style="color: white; margin-top: 5px;">Probar comunicación</a>
+                <label style="margin-top: 40px;"><strong>Caracteristicas GPIO</strong></label>
                 <table id="gvPorts" class="table table-striped">
                     <thead>
                         <tr>
@@ -61,9 +60,9 @@
                             <th>Descripción</th>
                         </tr>
                     </thead>
-                    <tbody data-bind="foreach:selectedBoardType.pinFeatures">
+                    <tbody data-bind="foreach:selectedBoardType() ? selectedBoardType().PinFeatures() : new Array()">
                         <tr>
-                            <td data-bind="text: Pins"></td>
+                            <td style="text-align: center;" data-bind="text: Pins"></td>
                             <td data-bind="text: PinDescription"></td>
                         </tr>
                     </tbody>
@@ -72,7 +71,7 @@
         </div>
         <div class="row-fluid">
             <div class="span4 offset4" style="margin-top: 40px;">
-                <a href="#" class="btn btn-success" style="color: white;">Guardar</a>
+                <a data-bind="click:saveBoard" class="btn btn-primary" style="color: white;">Guardar</a>
                 <a href="#" class="btn btn-danger" style="color: white; margin-left: 30px;">Cancelar</a>
             </div>
         </div>
