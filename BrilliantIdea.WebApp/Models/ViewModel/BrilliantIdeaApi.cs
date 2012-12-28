@@ -47,6 +47,7 @@ namespace BrilliantIdea.WebApp.Models.ViewModel
                     Authenticator = new HttpBasicAuthenticator(_accountSid, _secretKey)
                 };
             request.AddParameter("AccountSid", _accountSid, ParameterType.UrlSegment);
+            request.AddHeader("Accept", "application/json");
             var response = client.Execute(request);
             return response.Content;
         }

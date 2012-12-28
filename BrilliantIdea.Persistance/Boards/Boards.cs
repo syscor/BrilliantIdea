@@ -115,6 +115,19 @@ namespace BrilliantIdea.Framework.Boards
             return _deviceRepository.GetAllRows();
         }
 
+        public bool SaveBoard(BoardDevice boardDevice)
+        {
+            try
+            {
+                _deviceRepository.Insert(boardDevice);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public class BoardTypesResult
         {
             public List<BoardType> BoardTypeList { get; set; }  

@@ -42,7 +42,7 @@
                 <label><strong>Nombre del dispositivo</strong></label>
                 <input id="txtname" style="width: 100%" type="text" placeholder="Asignar un nombre..." data-bind=" value : boardName"/>
                 <label><strong>Descripción</strong></label>
-                <textarea id="txtarea" style="width: 100%" rows="3" data-bind="text:boardDescription"></textarea>
+                <textarea id="txtarea" style="width: 100%" rows="3" data-bind="value:boardDescription"></textarea>
                 <label><strong>Tipo de dispositivo</strong></label>
                 <select id="boardDropDown" style="width: auto;" data-bind="options:boardTypes, optionsText: 'Name', value:selectedBoardType, optionsCaption:'Selecciona el tipo de dispositivo...'"></select>
             </div>

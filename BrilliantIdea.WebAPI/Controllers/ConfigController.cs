@@ -50,11 +50,10 @@ namespace BrilliantIdea.WebAPI.Controllers
             return result;
         }
 
-        [System.Web.Mvc.HttpPost]
-        public bool SaveBoardDevice(string boardJson)
+        public bool PostBoard(BoardDevice board)
         {
-            
-            return true;
+            var boards = new Boards();
+            return boards.SaveBoard(board);
         }
 
         // GET api/values/5

@@ -26,15 +26,23 @@ function BoardSettingsLogic() {
             DeviceId: self.boardId(),
             Name: self.boardName(),
             Description: self.boardDescription(),
-            Type: self.selectedBoardType().TypeId(),
+            Type: self.selectedBoardType(),
             Url: self.deviceUrl(),
             PortsConfiguration: self.PortsConfiguration()
         };
-        
+
         var boardJson = ko.toJSON(board);
-        
-        $.post("config/SaveBoardDevice", { boardJson: boardJson }, function (data) {
-            alert("success");
+
+        $.post("config/SaveBoardDevice", { boardJson: boardJson }, function(data) {
+            if (data) {
+                $.getJSON("/config/GetBoards", function(data1) {
+                    ko.mapping.fromJS(data1, self.boardList);
+                    self.boardName("");
+                    self.boardDescription("");
+                    self.deviceUrl("");
+                });
+                SysCor.showAlert(SysCor.AlertEnum.Success, "Proceso exitoso", "El nuevo dispositivo ha sido almacenado correctamente");
+            }
         });
     };
 }
