@@ -5,11 +5,11 @@ function BoardSettingsLogic() {
     var self = this;
     self.type = "BoardSettingsLogic";
     self.boardTypes = ko.observableArray(new Array());
-    self.selectedBoardType = ko.observable();
+    self.selectedBoardType = ko.observable().extend({required:{message: 'Se requiere seleccionar un elemento'}});
     self.boardId = ko.observable();
-    self.boardName = ko.observable();
+    self.boardName = ko.observable().extend({required:true});
     self.boardDescription = ko.observable();
-    self.deviceUrl = ko.observable();
+    self.deviceUrl = ko.observable().extend({required:true});
     self.PortsConfiguration = ko.observableArray(new Array());
     self.boardList = ko.observableArray(new Array());
     self.alert = {
@@ -21,7 +21,11 @@ function BoardSettingsLogic() {
 
     };
 
-    self.saveBoard = function() {
+    self.saveBoard = function () {
+        if (self.errors().length>0) {
+            self.errors.showAllMessages();
+            return;
+        }
         var board = {
             DeviceId: self.boardId(),
             Name: self.boardName(),
@@ -45,6 +49,8 @@ function BoardSettingsLogic() {
             }
         });
     };
+    
+    self.errors = ko.validation.group(self);
 }
 
 BoardSettings.initialize = function () {
@@ -64,6 +70,7 @@ BoardSettings.getInitialValues = function (boardLogic) {
         $.getJSON("/config/GetBoards", function (data1) {
             
             boardLogic.boardList = ko.mapping.fromJS(data1);
+            ko.validation.configure({ errorMessageClass: 'custom-error'});
             ko.applyBindings(boardLogic, document.getElementById("boardSteps"));
             $("#boardDropDown").wijcombobox({
             });

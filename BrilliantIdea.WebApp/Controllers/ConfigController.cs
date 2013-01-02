@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using BrilliantIdea.WebApp.Models.DTOs;
 using BrilliantIdea.WebApp.Models.ViewModel;
-using Newtonsoft.Json.Linq;
 using RestSharp;
 
 namespace BrilliantIdea.WebApp.Controllers

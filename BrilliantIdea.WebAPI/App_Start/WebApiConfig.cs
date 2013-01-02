@@ -1,4 +1,8 @@
 ﻿using System.Web.Http;
+using BrilliantIdea.Framework.DAL;
+using BrilliantIdea.WebAPI.Filters;
+using Ninject;
+
 
 namespace BrilliantIdea.WebAPI.App_Start
 {
