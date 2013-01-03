@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using BrilliantIdea.WebApp.Models.DTOs;
 using BrilliantIdea.WebApp.Models.ViewModel;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace BrilliantIdea.WebApp.Controllers
@@ -50,10 +52,13 @@ namespace BrilliantIdea.WebApp.Controllers
         [HttpPost]
         public JsonResult SaveBoardDevice(string boardJson)
         {
+            var boardDevice = JsonConvert.DeserializeObject<BoardDeviceDTO>(boardJson);
+            boardDevice.DeviceId = Guid.NewGuid();
+
             var client = new BrilliantIdeaApi("", "");
             var request = new RestRequest("api/config/postboard", Method.POST);
             request.Parameters.Clear();
-            request.AddParameter("application/json", boardJson, ParameterType.RequestBody);
+            request.AddParameter("application/json",JsonConvert.SerializeObject(boardDevice), ParameterType.RequestBody);
             var response = client.Execute(request);
             return Json(response);
         }

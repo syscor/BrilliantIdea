@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
-using System.Web.Mvc;
 using BrilliantIdea.Framework.Boards;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 
 namespace BrilliantIdea.WebAPI.Controllers
 {
     public class ConfigController : ApiController
     {
+        // Initialize Boards Config
         public bool GetInitializeBoards()
         {
             try
@@ -28,10 +26,7 @@ namespace BrilliantIdea.WebAPI.Controllers
             return true;
         }
 
-        /// <summary>
-        /// Get all devices
-        /// </summary>
-        /// <returns></returns>
+       // Get all devices
         public IEnumerable<BoardDevice> GetBoards()
         {
             var boards = new Boards();
@@ -39,10 +34,7 @@ namespace BrilliantIdea.WebAPI.Controllers
             return result;
         }
 
-        /// <summary>
-        /// Get all type boards
-        /// </summary>
-        /// <returns>List of objetcs BoardTypeModel</returns>
+        // Get all type boards
         public Boards.BoardTypesResult GetTypeBoards()
         {
             var boards = new Boards();
@@ -50,10 +42,23 @@ namespace BrilliantIdea.WebAPI.Controllers
             return result;
         }
 
-        public bool PostBoard(BoardDevice board)
+        /// <summary>
+        /// Create new Board Device
+        /// </summary>
+        /// <param name="board">Board Device Info</param>
+        /// <returns>HttpResponseMessage</returns>
+        public HttpResponseMessage PostBoard(BoardDevice board)
         {
-            var boards = new Boards();
-            return boards.SaveBoard(board);
+            if (ModelState.IsValid)
+            {
+                var boards = new Boards();
+                var result = boards.SaveBoard(board);
+                if (result)
+                {
+                    return new HttpResponseMessage(HttpStatusCode.OK);
+                }
+            }
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }
 
         // GET api/values/5

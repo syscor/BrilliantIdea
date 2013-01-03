@@ -79,6 +79,8 @@ namespace BrilliantIdea.Framework.Boards
                 Name = "Tarjeta Principal",
                 Description = "Tarjeta de adquisición de datos tipo Netduino, con configuración inicial",
                 Url = "10.1.0.0",
+                Enable = true,
+                LastUpdate = DateTime.Now
             };
 
             if (!_deviceRepository.Any(x => x.Name == boardModel.Name))

@@ -12,14 +12,16 @@ function BoardSettingsLogic() {
     self.deviceUrl = ko.observable().extend({required:true});
     self.PortsConfiguration = ko.observableArray(new Array());
     self.boardList = ko.observableArray(new Array());
+    self.showOnlyEnables = ko.observable(false);
     self.alert = {
         head: ko.observable(),
         body: ko.observable()
     };
-
     self.testCommunication = function() {
 
     };
+    
+    self.boardFilteredList = ko.observableArray(new Array());
 
     self.saveBoard = function () {
         if (self.errors().length>0) {
@@ -38,14 +40,18 @@ function BoardSettingsLogic() {
         var boardJson = ko.toJSON(board);
 
         $.post("config/SaveBoardDevice", { boardJson: boardJson }, function(data) {
-            if (data) {
+            if (data=="success") {
                 $.getJSON("/config/GetBoards", function(data1) {
                     ko.mapping.fromJS(data1, self.boardList);
                     self.boardName("");
                     self.boardDescription("");
                     self.deviceUrl("");
                 });
+                $("#boardSteps").wijtabs('select', 0);
                 SysCor.showAlert(SysCor.AlertEnum.Success, "Proceso exitoso", "El nuevo dispositivo ha sido almacenado correctamente");
+                self.errors.showAllMessages(false);
+            } else {
+                SysCor.showAlert(SysCor.AlertEnum.Error, "Lo sentimos se ha producido un problema", "Contacte a su administrador de sistemas, detalle: " + data);
             }
         });
     };
@@ -70,12 +76,15 @@ BoardSettings.getInitialValues = function (boardLogic) {
         $.getJSON("/config/GetBoards", function (data1) {
             
             boardLogic.boardList = ko.mapping.fromJS(data1);
+            BoardSettings.filterBoardList(boardLogic);
             ko.validation.configure({ errorMessageClass: 'custom-error'});
             ko.applyBindings(boardLogic, document.getElementById("boardSteps"));
-            $("#boardDropDown").wijcombobox({
-            });
+            $("#boardDropDown").wijcombobox({});
             if (data.length == 0 || data1.length == 0) {
                 SysCor.showAlert(SysCor.AlertEnum.Error, "Falta de datos", "No se ha inicializado aún la base de datos, por favor vaya a configuración -> Inicializar Configuraciones");
+                for (var i = 1; i < 4; i++) {
+                    $("#boardSteps").wijtabs('disableTab', i);
+                }
             }
         });
     });
@@ -89,4 +98,16 @@ BoardSettings.initializeConfigurations = function () {
             SysCor.showAlert(SysCor.AlertEnum.Error, "Verifique sus datos de conexión", SysCor.AlertGenericMessages.Error);
         }
     });
+};
+
+BoardSettings.filterBoardList = function(boardLogic) {
+    var i = boardLogic.boardList().length;
+    boardLogic.boardFilteredList(new Array());
+    for (var j = 0; j < i; j++) {
+        if (boardLogic.boardList()[j].Enable() && boardLogic.showOnlyEnables()) {
+            boardLogic.boardFilteredList().push(boardLogic.boardList()[j]);
+        } else if (!boardLogic.showOnlyEnables()) {
+            boardLogic.boardFilteredList().push(boardLogic.boardList()[j]);
+        }
+    }
 };

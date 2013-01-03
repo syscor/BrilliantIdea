@@ -8,7 +8,6 @@ namespace BrilliantIdea.WebApp.Controllers
 {
     public class SysCorControllerBase : Controller
     {
-
         protected override void OnException(ExceptionContext filterContext)
         {
             base.OnException(filterContext);

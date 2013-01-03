@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Helpers;
 using RestSharp;
@@ -32,14 +33,14 @@ namespace BrilliantIdea.WebApp.Models.ViewModel
             request.AddParameter("AccountSid", _accountSid, ParameterType.UrlSegment); // used on every request
             var response = client.Execute<T>(request);
 
-            if (response.ErrorException != null)
-            {
-                throw response.ErrorException;
-            }
             return response.Data;
         }
-
-        public object Execute(RestRequest request)
+        /// <summary>
+        /// Execute para eventos POST, PUT ...
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public string Execute(RestRequest request)
         {
             var client = new RestClient
                 {
@@ -49,6 +50,10 @@ namespace BrilliantIdea.WebApp.Models.ViewModel
             request.AddParameter("AccountSid", _accountSid, ParameterType.UrlSegment);
             request.AddHeader("Accept", "application/json");
             var response = client.Execute(request);
+            if (response.StatusCode!=HttpStatusCode.BadRequest)
+            {
+                response.Content = "success";
+            }
             return response.Content;
         }
     }

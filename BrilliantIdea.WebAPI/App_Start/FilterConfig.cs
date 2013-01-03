@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http.Filters;
+using System.Web.Mvc;
 using BrilliantIdea.WebAPI.Filters;
 
 namespace BrilliantIdea.WebAPI
@@ -8,6 +9,11 @@ namespace BrilliantIdea.WebAPI
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+        }
+
+        public static void RegisterHttpFilters(HttpFilterCollection filters)
+        {
+            filters.Add(new ModelValidationFilterAttribute());
         }
     }
 }
