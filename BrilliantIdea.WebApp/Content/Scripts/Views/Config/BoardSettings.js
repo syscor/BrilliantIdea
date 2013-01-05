@@ -12,16 +12,55 @@ function BoardSettingsLogic() {
     self.deviceUrl = ko.observable().extend({required:true});
     self.PortsConfiguration = ko.observableArray(new Array());
     self.boardList = ko.observableArray(new Array());
-    self.showOnlyEnables = ko.observable(false);
+    self.showOnlyEnables = ko.observable(true);
+    self.testboardFilteredList = ko.observableArray(new Array());
+
+    self.boardFilteredList = ko.computed(function () {
+        var status = self.showOnlyEnables();
+        var i = self.boardList().length;
+        self.testboardFilteredList().splice(0, i);
+        for (var j = 0; j < i; j++) {
+            if (self.boardList()[j].Enable() && status) {
+                self.testboardFilteredList().push(self.boardList()[j]);
+            } else if (!status) {
+                self.testboardFilteredList().push(self.boardList()[j]);
+            }
+        }
+        self.testboardFilteredList().sort(function(left, right) {
+            return left.Enable == right.Enable ? 0 : (left.Enable < right.Enable ? -1 : 1);
+        });
+        return self.testboardFilteredList();
+    }, self);
+
     self.alert = {
         head: ko.observable(),
         body: ko.observable()
     };
+    
     self.testCommunication = function() {
 
     };
-    
-    self.boardFilteredList = ko.observableArray(new Array());
+
+    self.toggleEnable = function (board) {
+        var header = board.Enable() ? "Desactivación de dispositivo..." : "Activación de dispositivo";
+        var body = board.Enable() ? "¿Está seguro que desea desactivar el dispositivo " + board.Name() + "?, tenga en cuenta que no podrá ser utilizado en ningún proceso, pero su historial no será borrado" : "¿Desea reactivar el dispositivo? Estará disponible para programar procesos";
+        var modal = SysCor.getModal(header, body, "", "", "BoardSettings.updateBoard");
+        $('#modalContainer').html(modal);
+        $('#modalYes').click(function() {
+            $('#sysCorModal').modal('hide');
+            board.Enable(!board.Enable());
+            var boardJson = ko.toJSON(board);
+            $.post("config/UpdateBoardDevice", { boardJson: boardJson }, function(data) {
+                if (data == "success") {
+                    SysCor.showAlert(SysCor.AlertEnum.Success, "Proceso exitoso", "El dispositivo ha sido actualizado correctamente");
+                } else {
+                    board.Enable(!board.Enable());
+                    SysCor.showAlert(SysCor.AlertEnum.Error, "Lo sentimos se ha producido un problema", "Contacte a su administrador de sistemas, detalle: " + data);
+                }
+            });
+        });
+        $('#sysCorModal').modal();
+    };
 
     self.saveBoard = function () {
         if (self.errors().length>0) {
@@ -34,7 +73,8 @@ function BoardSettingsLogic() {
             Description: self.boardDescription(),
             Type: self.selectedBoardType(),
             Url: self.deviceUrl(),
-            PortsConfiguration: self.PortsConfiguration()
+            PortsConfiguration: self.PortsConfiguration(),
+            Enable : true
         };
 
         var boardJson = ko.toJSON(board);
@@ -76,7 +116,6 @@ BoardSettings.getInitialValues = function (boardLogic) {
         $.getJSON("/config/GetBoards", function (data1) {
             
             boardLogic.boardList = ko.mapping.fromJS(data1);
-            BoardSettings.filterBoardList(boardLogic);
             ko.validation.configure({ errorMessageClass: 'custom-error'});
             ko.applyBindings(boardLogic, document.getElementById("boardSteps"));
             $("#boardDropDown").wijcombobox({});
@@ -86,6 +125,7 @@ BoardSettings.getInitialValues = function (boardLogic) {
                     $("#boardSteps").wijtabs('disableTab', i);
                 }
             }
+            boardLogic.showOnlyEnables(false);
         });
     });
 };
@@ -98,16 +138,4 @@ BoardSettings.initializeConfigurations = function () {
             SysCor.showAlert(SysCor.AlertEnum.Error, "Verifique sus datos de conexión", SysCor.AlertGenericMessages.Error);
         }
     });
-};
-
-BoardSettings.filterBoardList = function(boardLogic) {
-    var i = boardLogic.boardList().length;
-    boardLogic.boardFilteredList(new Array());
-    for (var j = 0; j < i; j++) {
-        if (boardLogic.boardList()[j].Enable() && boardLogic.showOnlyEnables()) {
-            boardLogic.boardFilteredList().push(boardLogic.boardList()[j]);
-        } else if (!boardLogic.showOnlyEnables()) {
-            boardLogic.boardFilteredList().push(boardLogic.boardList()[j]);
-        }
-    }
 };

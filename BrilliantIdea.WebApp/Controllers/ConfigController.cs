@@ -54,11 +54,26 @@ namespace BrilliantIdea.WebApp.Controllers
         {
             var boardDevice = JsonConvert.DeserializeObject<BoardDeviceDTO>(boardJson);
             boardDevice.DeviceId = Guid.NewGuid();
+            boardDevice.LastUpdate = DateTime.Now;
 
             var client = new BrilliantIdeaApi("", "");
             var request = new RestRequest("api/config/postboard", Method.POST);
             request.Parameters.Clear();
             request.AddParameter("application/json",JsonConvert.SerializeObject(boardDevice), ParameterType.RequestBody);
+            var response = client.Execute(request);
+            return Json(response);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateBoardDevice(string boardJson)
+        {
+            var boardDevice = JsonConvert.DeserializeObject<BoardDeviceDTO>(boardJson);
+            boardDevice.LastUpdate = DateTime.Now;
+
+            var client = new BrilliantIdeaApi("", "");
+            var request = new RestRequest("api/config/postboard", Method.POST);
+            request.Parameters.Clear();
+            request.AddParameter("application/json", JsonConvert.SerializeObject(boardDevice), ParameterType.RequestBody);
             var response = client.Execute(request);
             return Json(response);
         }

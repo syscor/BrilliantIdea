@@ -121,7 +121,25 @@ namespace BrilliantIdea.Framework.Boards
         {
             try
             {
-                _deviceRepository.Insert(boardDevice);
+                if (_deviceRepository.Any(x=>x.DeviceId==boardDevice.DeviceId))
+                {
+                    var devicetoUpdate = _deviceRepository.Single(y => y.DeviceId == boardDevice.DeviceId);
+                    if (devicetoUpdate != null)
+                    {
+                        devicetoUpdate.Description = boardDevice.Description;
+                        devicetoUpdate.Enable = boardDevice.Enable;
+                        devicetoUpdate.LastUpdate = boardDevice.LastUpdate;
+                        devicetoUpdate.Name = boardDevice.Name;
+                        devicetoUpdate.PortsConfiguration = boardDevice.PortsConfiguration;
+                        devicetoUpdate.Type = boardDevice.Type;
+                        devicetoUpdate.Url = boardDevice.Url;
+                        _deviceRepository.Update(devicetoUpdate);
+                    }
+                }
+                else
+                {
+                    _deviceRepository.Insert(boardDevice);
+                }
                 return true;
             }
             catch (Exception)

@@ -61,7 +61,7 @@ namespace BrilliantIdea.Framework.DAL
 
         public void Update(T entity)
         {
-            throw new NotImplementedException();
+            GetMongoCollection.Save(entity);
         }
 
         public T New()
