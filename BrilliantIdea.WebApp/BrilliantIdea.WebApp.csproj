@@ -240,6 +240,7 @@
     <Content Include="Content\jquery.wijmo-open.2.3.4.css" />
     <Content Include="Content\Scripts\Views\Monitor\Monitor.js" />
     <Content Include="Content\Scripts\Views\Process\Process.js" />
+    <Content Include="Content\Scripts\Views\Sensor\SensorSettings.js" />
     <Content Include="Content\themes\aristo\images\scrollbar-horizontal.png" />
     <Content Include="Content\themes\aristo\images\scrollbar-vertical.png" />
     <Content Include="Content\themes\aristo\images\scrollbutton-vertical.png" />
@@ -431,10 +432,10 @@
     <Content Include="Views\Monitor\PressureView.cshtml" />
     <Content Include="Views\Monitor\TemperatureView.cshtml" />
     <Content Include="Views\Process\ProcessView.cshtml" />
-    <Content Include="Views\Sensor\SensorView.cshtml" />
     <Content Include="Views\Config\ControlPanel.cshtml" />
     <Content Include="Views\Config\BoardSettings.cshtml" />
     <Content Include="Views\Config\RestoreSettings.cshtml" />
+    <Content Include="Views\Sensor\SensorPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

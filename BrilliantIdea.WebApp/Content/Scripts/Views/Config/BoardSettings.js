@@ -49,19 +49,49 @@ function BoardSettingsLogic() {
         $('#modalYes').click(function() {
             $('#sysCorModal').modal('hide');
             board.Enable(!board.Enable());
-            var boardJson = ko.toJSON(board);
-            $.post("config/UpdateBoardDevice", { boardJson: boardJson }, function(data) {
-                if (data == "success") {
-                    SysCor.showAlert(SysCor.AlertEnum.Success, "Proceso exitoso", "El dispositivo ha sido actualizado correctamente");
-                } else {
-                    board.Enable(!board.Enable());
-                    SysCor.showAlert(SysCor.AlertEnum.Error, "Lo sentimos se ha producido un problema", "Contacte a su administrador de sistemas, detalle: " + data);
-                }
-            });
+            self.updateBoard(board);
         });
         $('#sysCorModal').modal();
     };
 
+    self.editBoard = function (board) {
+        var id = board.DeviceId();
+        var element = document.getElementById(id);
+        element.setAttribute("style", "display:none");
+        element = document.getElementById("edit" + id);
+        element.removeAttribute("style", "");
+    };
+
+    self.saveChanges = function(board) {
+        var header = "Actualización de dispositivo...";
+        var body = "¿Desea guardar los cambios al dispositivo " + board.Name() + "?";
+        var modal = SysCor.getModal(header, body, "", "", "BoardSettings.updateBoard");
+        $('#modalContainer').html(modal);
+        $('#modalYes').click(function () {
+            $('#sysCorModal').modal('hide');
+            self.updateBoard(board);
+            var id = board.DeviceId();
+            var element = document.getElementById(id);
+            element.removeAttribute("style", "");
+            element = document.getElementById("edit" + id);
+            element.setAttribute("style", "display:none");
+
+        });
+        $('#sysCorModal').modal();
+    };
+
+    self.updateBoard = function(board) {
+        var boardJson = ko.toJSON(board);
+        $.post("config/UpdateBoardDevice", { boardJson: boardJson }, function (data) {
+            if (data == "success") {
+                SysCor.showAlert(SysCor.AlertEnum.Success, "Proceso exitoso", "El dispositivo ha sido actualizado correctamente");
+            } else {
+                SysCor.showAlert(SysCor.AlertEnum.Error, "Lo sentimos se ha producido un problema", "Contacte a su administrador de sistemas, detalle: " + data);
+            }
+        });
+
+    };
+    
     self.saveBoard = function () {
         if (self.errors().length>0) {
             self.errors.showAllMessages();

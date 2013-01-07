@@ -23,7 +23,8 @@ namespace BrilliantIdea.WebApp.App_Start
                "~/Content/Scripts/Views/Shared/SysCor.util.js",
                "~/Content/Scripts/Views/Process/Process.js",
                "~/Content/Scripts/Views/Monitor/Monitor.js",
-               "~/Content/Scripts/Views/Config/BoardSettings.js"
+               "~/Content/Scripts/Views/Config/BoardSettings.js",
+               "~/Content/Scripts/Views/Sensor/SensorSettings.js"
                ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

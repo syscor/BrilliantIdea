@@ -38,7 +38,7 @@
                                 <ul class="dropdown-menu">
                                     <li class="nav-header">Hardware</li>
                                     <li><a href="javascript:void(0);" onclick="SysCor.performViewChange('/Config/BoardSettings');">Tarjetas DAQ</a></li>
-                                    <li><a href="#">Sensores</a></li>
+                                    <li><a href="javascript:void(0);" onclick="SysCor.performViewChange('/Sensor/SensorPanel');">Sensores</a></li>
                                     <li class="divider"></li>
                                     <li><a href="javascript:void(0);" onclick="SysCor.performViewChange('/Config/RestoreSettings');">Inicializar Configuraciones</a></li>
                                 </ul>
@@ -110,6 +110,5 @@
             SysCor.initialize();
         </script>
         @RenderSection("scripts", false)
-        
     </body>
 </html>
