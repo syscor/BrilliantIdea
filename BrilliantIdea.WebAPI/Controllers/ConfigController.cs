@@ -26,7 +26,7 @@ namespace BrilliantIdea.WebAPI.Controllers
             return true;
         }
 
-       // Get all devices
+       // Get all devices not deleted
         public IEnumerable<BoardDevice> GetBoards()
         {
             var boards = new Boards();
@@ -57,6 +57,16 @@ namespace BrilliantIdea.WebAPI.Controllers
                 {
                     return new HttpResponseMessage(HttpStatusCode.OK);
                 }
+            }
+            return new HttpResponseMessage(HttpStatusCode.BadRequest);
+        }
+
+        public HttpResponseMessage DeleteBoard(string deviceJson)
+        {
+            if (ModelState.IsValid)
+            {
+                var boards = new Boards();
+                var result = boards.DeleteBoard(deviceJson);
             }
             return new HttpResponseMessage(HttpStatusCode.BadRequest);
         }

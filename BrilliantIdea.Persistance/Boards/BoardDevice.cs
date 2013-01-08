@@ -13,7 +13,7 @@ namespace BrilliantIdea.Framework.Boards
         [BsonId, JsonIgnore]
         public ObjectId Id { get; set; }
         [DataMember(IsRequired = true)]
-        public Guid DeviceId { get; set; }
+        public string DeviceId { get; set; }
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
@@ -22,7 +22,7 @@ namespace BrilliantIdea.Framework.Boards
         [Required]
         public string Url { get; set; }
         public List<Port> PortsConfiguration { get; set; }
-        public bool Enable { get; set; }
+        public bool IsEnable { get; set; }
         public DateTime LastUpdate { get; set; }
     }
 

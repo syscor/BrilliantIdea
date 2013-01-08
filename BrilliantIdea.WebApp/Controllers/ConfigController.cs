@@ -53,7 +53,7 @@ namespace BrilliantIdea.WebApp.Controllers
         public JsonResult SaveBoardDevice(string boardJson)
         {
             var boardDevice = JsonConvert.DeserializeObject<BoardDeviceDTO>(boardJson);
-            boardDevice.DeviceId = Guid.NewGuid();
+            boardDevice.DeviceId = Guid.NewGuid().ToString();
             boardDevice.LastUpdate = DateTime.Now;
 
             var client = new BrilliantIdeaApi("", "");
@@ -74,6 +74,19 @@ namespace BrilliantIdea.WebApp.Controllers
             var request = new RestRequest("api/config/postboard", Method.POST);
             request.Parameters.Clear();
             request.AddParameter("application/json", JsonConvert.SerializeObject(boardDevice), ParameterType.RequestBody);
+            var response = client.Execute(request);
+            return Json(response);
+        }
+
+        [HttpPost]
+        public JsonResult RemoveBoardDevice(string deviceJson)
+        {
+            var deviceJsonId = JsonConvert.DeserializeObject<string>(deviceJson);
+
+            var client = new BrilliantIdeaApi("", "");
+            var request = new RestRequest("api/config/deleteboard", Method.DELETE);
+            request.Parameters.Clear();
+            request.AddParameter("deviceJson", deviceJsonId);
             var response = client.Execute(request);
             return Json(response);
         }

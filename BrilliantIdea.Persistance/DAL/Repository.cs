@@ -5,7 +5,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using BrilliantIdea.Framework.Boards;
+using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 using MongoDB.Driver.Linq;
 
 namespace BrilliantIdea.Framework.DAL
@@ -31,7 +33,7 @@ namespace BrilliantIdea.Framework.DAL
 
         public IEnumerable<T> GetAllRowsWhere(Func<T, bool> exp)
         {
-            throw new NotImplementedException();
+            return GetMongoCollection.AsQueryable().Where(exp);
         }
 
         public bool Any(Func<T, bool> exp)
@@ -49,9 +51,11 @@ namespace BrilliantIdea.Framework.DAL
             throw new NotImplementedException();
         }
 
-        public void Delete(T entity)
+        public bool Delete(ObjectId id)
         {
-            throw new NotImplementedException();
+            IMongoQuery query = Query.EQ("_id", id);
+            WriteConcernResult result = GetMongoCollection.Remove(query);
+            return result.DocumentsAffected == 1;
         }
 
         public void Insert(T entity)

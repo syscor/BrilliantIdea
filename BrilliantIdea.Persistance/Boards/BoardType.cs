@@ -10,7 +10,7 @@ namespace BrilliantIdea.Framework.Boards
     {
         [BsonId, JsonIgnore]
         public ObjectId Id { get; set; }
-        public Guid TypeId { get; set; }
+        public string TypeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public List<PinFeature> PinFeatures { get; set; }

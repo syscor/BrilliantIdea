@@ -36,7 +36,7 @@ namespace BrilliantIdea.Framework.Boards
             var boardTypeModel = new BoardType
                 {
                     Name = "Netduino Plus",
-                    TypeId = Guid.NewGuid(),
+                    TypeId = Guid.NewGuid().ToString(),
                     Description = "Tarjeta Netduino Plus con microcontrolador 32-bits a 168Mhz y conexión ethernet",
                     PinFeatures = pinList
                 };
@@ -53,10 +53,9 @@ namespace BrilliantIdea.Framework.Boards
             var sensorType = new Repository<SensorType>(ConnectionString, DatabaseName, "SensorTypes");
             var sensors = new Repository<Sensor>(ConnectionString, DatabaseName, "Sensors");
 
-            var ports = new List<Port>();
             var temperatureSensor = new SensorType
                 {SensorTypeId = Guid.NewGuid(), Name = "Temperatura", Description = "Medición de temperatura"};
-            if (!sensorType.Any(x=>x.Name==temperatureSensor.Name))
+            if (!sensorType.Any(x => x.Name == temperatureSensor.Name))
             {
                 sensorType.Insert(temperatureSensor);
             }
@@ -68,42 +67,24 @@ namespace BrilliantIdea.Framework.Boards
                     Description = "Sensor de temperatura modelo LM35",
                     SensorType = temperatureSensor
                 };
-            if (!sensors.Any(x=>x.Name==genericSensor.Name))
+            if (!sensors.Any(x => x.Name == genericSensor.Name))
             {
                 sensors.Insert(genericSensor);
             }
-            
+
             var boardModel = new BoardDevice
-            {
-                DeviceId = Guid.NewGuid(),
-                Name = "Tarjeta Principal",
-                Description = "Tarjeta de adquisición de datos tipo Netduino, con configuración inicial",
-                Url = "10.1.0.0",
-                Enable = true,
-                LastUpdate = DateTime.Now
-            };
-
-            if (!_deviceRepository.Any(x => x.Name == boardModel.Name))
-            {
-                for (var i = 0; i < 22; i++)
                 {
-                    var port = new Port {PortNumber = i, AttachedSensor = null, InputType = 0, Enable = false};
-                    if (i == 5)
-                    {
-                        port.AttachedSensor = genericSensor;
-                        port.Enable = true;
-                    }
-                    ports.Add(port);
-                }
+                    DeviceId = Guid.NewGuid().ToString(),
+                    Name = "Tarjeta Principal",
+                    Description = "Tarjeta de adquisición de datos tipo Netduino, con configuración inicial",
+                    Url = "10.1.0.0",
+                    IsEnable = true,
+                    LastUpdate = DateTime.Now,
+                };
+            var deviceType = _typeRepository.Single(y => y.Name == "Netduino Plus");
+            boardModel.Type = deviceType;
 
-                boardModel.PortsConfiguration = ports;
-                var deviceType = _typeRepository.Single(y => y.Name == "Netduino Plus");
-                boardModel.Type = deviceType;
-
-                _deviceRepository.Insert(boardModel);
-
-            }
-
+            _deviceRepository.Insert(boardModel);
         }
 
         public BoardTypesResult GetAllBoardTypes()
@@ -127,7 +108,7 @@ namespace BrilliantIdea.Framework.Boards
                     if (devicetoUpdate != null)
                     {
                         devicetoUpdate.Description = boardDevice.Description;
-                        devicetoUpdate.Enable = boardDevice.Enable;
+                        devicetoUpdate.IsEnable = boardDevice.IsEnable;
                         devicetoUpdate.LastUpdate = boardDevice.LastUpdate;
                         devicetoUpdate.Name = boardDevice.Name;
                         devicetoUpdate.PortsConfiguration = boardDevice.PortsConfiguration;
@@ -141,6 +122,19 @@ namespace BrilliantIdea.Framework.Boards
                     _deviceRepository.Insert(boardDevice);
                 }
                 return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteBoard(string deviceId)
+        {
+            try
+            {
+                var device = _deviceRepository.Single(y => y.DeviceId == deviceId.Trim());
+                return _deviceRepository.Delete(device.Id);
             }
             catch (Exception)
             {

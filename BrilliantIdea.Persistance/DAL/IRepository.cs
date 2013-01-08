@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 
 namespace BrilliantIdea.Framework.DAL
 {
@@ -41,8 +42,8 @@ namespace BrilliantIdea.Framework.DAL
         /// <summary> 
         /// Mark an entity to be deleted when the context is saved. 
         /// </summary> 
-        /// <param name="entity"></param> 
-        void Delete(T entity);
+        /// <param name="id"></param> 
+        bool Delete(ObjectId id);
 
         /// <summary> 
         /// Adds new entity.. 

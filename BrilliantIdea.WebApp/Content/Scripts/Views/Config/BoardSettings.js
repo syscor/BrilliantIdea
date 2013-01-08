@@ -20,14 +20,14 @@ function BoardSettingsLogic() {
         var i = self.boardList().length;
         self.testboardFilteredList().splice(0, i);
         for (var j = 0; j < i; j++) {
-            if (self.boardList()[j].Enable() && status) {
+            if (self.boardList()[j].IsEnable() && status) {
                 self.testboardFilteredList().push(self.boardList()[j]);
             } else if (!status) {
                 self.testboardFilteredList().push(self.boardList()[j]);
             }
         }
         self.testboardFilteredList().sort(function(left, right) {
-            return left.Enable == right.Enable ? 0 : (left.Enable < right.Enable ? -1 : 1);
+            return left.IsEnable == right.IsEnable ? 0 : (left.IsEnable < right.IsEnable ? -1 : 1);
         });
         return self.testboardFilteredList();
     }, self);
@@ -42,13 +42,13 @@ function BoardSettingsLogic() {
     };
 
     self.toggleEnable = function (board) {
-        var header = board.Enable() ? "Desactivación de dispositivo..." : "Activación de dispositivo";
-        var body = board.Enable() ? "¿Está seguro que desea desactivar el dispositivo " + board.Name() + "?, tenga en cuenta que no podrá ser utilizado en ningún proceso, pero su historial no será borrado" : "¿Desea reactivar el dispositivo? Estará disponible para programar procesos";
-        var modal = SysCor.getModal(header, body, "", "", "BoardSettings.updateBoard");
+        var header = board.IsEnable() ? "Desactivación de dispositivo..." : "Activación de dispositivo";
+        var body = board.IsEnable() ? "¿Está seguro que desea desactivar el dispositivo " + board.Name() + "?, tenga en cuenta que no podrá ser utilizado en ningún proceso, pero su historial no será borrado" : "¿Desea reactivar el dispositivo? Estará disponible para programar procesos";
+        var modal = SysCor.getModal(header, body, "", "");
         $('#modalContainer').html(modal);
         $('#modalYes').click(function() {
             $('#sysCorModal').modal('hide');
-            board.Enable(!board.Enable());
+            board.IsEnable(!board.IsEnable());
             self.updateBoard(board);
         });
         $('#sysCorModal').modal();
@@ -75,7 +75,6 @@ function BoardSettingsLogic() {
             element.removeAttribute("style", "");
             element = document.getElementById("edit" + id);
             element.setAttribute("style", "display:none");
-
         });
         $('#sysCorModal').modal();
     };
@@ -91,6 +90,26 @@ function BoardSettingsLogic() {
         });
 
     };
+
+    self.deleteBoard=function(board) {
+        var header = "Eliminar el dispositivo...";
+        var body = "¿Está seguro que desea eliminar el dispositivo " + board.Name() + "?, tenga en cuenta que no podrá ser utilizado en ningún proceso ni podrá volver a activarlo, pero su historial no será borrado";
+        var modal = SysCor.getModal(header, body, "", "");
+        $('#modalContainer').html(modal);
+        $('#modalYes').click(function () {
+            $('#sysCorModal').modal('hide');
+            var boardJson = ko.toJSON(board.DeviceId);
+            $.post("config/RemoveBoardDevice", { deviceJson: boardJson }, function (data) {
+                if (data=="success") {
+                    SysCor.showAlert(SysCor.AlertEnum.Success, "Proceso exitoso", "El dispositivo ha sido actualizado correctamente");
+                } else {
+                    SysCor.showAlert(SysCor.AlertEnum.Error, "Lo sentimos se ha producido un problema", "Contacte a su administrador de sistemas, detalle: " + data);
+                }
+            });
+        });
+        $('#sysCorModal').modal();
+
+    };
     
     self.saveBoard = function () {
         if (self.errors().length>0) {
@@ -104,7 +123,7 @@ function BoardSettingsLogic() {
             Type: self.selectedBoardType(),
             Url: self.deviceUrl(),
             PortsConfiguration: self.PortsConfiguration(),
-            Enable : true
+            IsEnable: true,
         };
 
         var boardJson = ko.toJSON(board);
